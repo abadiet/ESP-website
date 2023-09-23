@@ -1,3 +1,16 @@
+/* BACKGROUND */
+
+const background = document.querySelector('.background');
+
+window.addEventListener('scroll', () => {
+    const scrollDeg = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * (180 - 45) + 45;
+
+    background.style.background = `linear-gradient(${scrollDeg}deg, hsl(53deg 86% 57%) 0%, hsl(23deg 100% 44%) 28%, hsl(327deg 100% 32%) 36%, hsl(239deg 100% 23%) 45%, hsl(0deg 0% 0%) 100%)`;
+});
+
+
+/* SHAPES */
+
 const shapeContainer = document.getElementById("shape-container");
 
 function moveShapeRandomly(shape) {
@@ -29,8 +42,6 @@ function createShape() {
     shape.style.height = `${size}%`;
     shape.style.left = `${xPos}%`;
     shape.style.top = `${yPos}%`;
-
-    shape.style.filter = `blur(2rem)`;
 
     const animationDuration = Math.random() * (3 - 0.5) + 0.5;
     shape.style.animation = `shape-animation ${animationDuration}s infinite`;
