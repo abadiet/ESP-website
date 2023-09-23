@@ -1,23 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-}
-
-h1 {
-    color: #333;
-}
-
-p {
-    color: #666;
-}
-  
-.collapsible-content {
-    height: 0;
-    overflow: hidden;
-    transition: height 0.3s ease;
-}
-
-.collapsible-content.show {
-    height: auto;
-    padding: 10px;
+.shape {
+    position: absolute;
+    animation-fill-mode: both;
 }
