@@ -1,7 +1,7 @@
 const shapeContainer = document.getElementById("shape-container");
 
 function moveShapeRandomly(shape) {
-    const size = Math.random() * (25 - 3) + 3;
+    const size = Math.random() * (5 - 0.5) + 0.5;
     shape.style.width = `${size}%`;
     shape.style.height = `${size}%`;
 
@@ -21,11 +21,7 @@ function createShape() {
     const shape = document.createElement("div");
     shape.classList.add("shape");
 
-    const colors = ["pink", "lightblue", "lightgreen", "lightyellow", "lightcoral"];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    shape.style.backgroundColor = randomColor;
-
-    const size = Math.random() * (25 - 3) + 3;
+    const size = Math.random() * (5 - 1) + 1;
     const xPos = Math.random() * (100 - size);
     const yPos = Math.random() * (100 - size);
 
@@ -36,7 +32,7 @@ function createShape() {
 
     shape.style.filter = `blur(2rem)`;
 
-    const animationDuration = Math.random() * (3 - 1) + 1;
+    const animationDuration = Math.random() * (3 - 0.5) + 0.5;
     shape.style.animation = `shape-animation ${animationDuration}s infinite`;
     shape.style.transition = `transform ${animationDuration}s ease-in-out, border-radius ${animationDuration}s ease-in-out, width ${animationDuration}s ease-in-out, height ${animationDuration}s ease-in-out`;
 
@@ -49,6 +45,6 @@ function createShape() {
     }, animationDuration * 1000);
 }
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 20; i++) {
     createShape();
 }

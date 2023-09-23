@@ -4,11 +4,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Simple Website</title>
+  <title>ESP</title>
   <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/background.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
 </head>
 <body>
+
+  <div class="background"></div>
   <div class="shape-container" id="shape-container"></div>
-  <script src="/static/js/background.js" defer></script>
+  <script src="/static/js/shapes.js" defer></script>
+
+  <div class="asso-hello">
+    <div class="asso-name">
+      Ensma Space Project
+    </div>
+    <img src="/static/pictures/ESPlogo.png" style="height: 50vh; width: auto; display: block; margin-left: auto; margin-right: auto; margin-top: 10vh;">
+  </div>
+
+  <div class="fixed-header">
+    <div id="collapsible-activator" class="menu-entry">
+      <div id="collapsible-content" class="menu">
+        <br>
+        <a href="/" class="menu-link">Ensma Space Project</a>
+        <br>
+        <br>
+        <a href="/ensmasteel.html" class="menu-link">Ensmasteel</a>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+    <script src="/static/js/collapsible.js"></script>
+  </div>
+
+  <div>
+    <img src="/static/pictures/ensma.webp">
+    <img src="/static/pictures/ensma.webp">
+    <img src="/static/pictures/ensma.webp">
+    <img src="/static/pictures/ensma.webp">
+    <img src="/static/pictures/ensma.webp">
+    <img src="/static/pictures/ensma.webp">
+  </div>
+  <script src="/static/js/scroll-reveal.js"></script>
 </body>
 </html>

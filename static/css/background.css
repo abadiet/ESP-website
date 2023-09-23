@@ -1,0 +1,43 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        35deg,
+        hsl(0deg 0% 0%) 0%,
+        hsl(240deg 100% 28%) 16%,
+        hsl(240deg 100% 31%) 24%,
+        hsl(240deg 100% 34%) 30%,
+        hsl(240deg 100% 37%) 35%,
+        hsl(267deg 100% 36%) 40%,
+        hsl(299deg 100% 27%) 45%,
+        hsl(318deg 100% 30%) 50%,
+        hsl(337deg 56% 37%) 55%,
+        hsl(354deg 31% 41%) 60%,
+        hsl(360deg 24% 37%) 65%,
+        hsl(360deg 23% 32%) 70%,
+        hsl(360deg 23% 27%) 76%,
+        hsl(360deg 22% 22%) 84%,
+        hsl(0deg 20% 17%) 100%
+      );
+    opacity: 0;
+    z-index: -1;
+    animation: fade-in 2s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.shape {
+    position: absolute;
+    animation-fill-mode: both;
+    background-color: white;
+}
