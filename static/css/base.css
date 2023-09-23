@@ -24,6 +24,7 @@ body {
 
 .asso-name {
     font-family: outlined;
+    margin-top: 5vh;
     color: #ffffffcc;
     text-align: center;
     font-size: 8vw;
@@ -60,4 +61,13 @@ body {
     font-size: medium;
     margin-left: 15vw;
     margin-right: 15vw;
+}
+
+.picture {
+    width: 80vw;
+    max-width: 900px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
 }
