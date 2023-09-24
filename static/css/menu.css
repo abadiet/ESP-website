@@ -5,35 +5,50 @@
     width: 100%;
 }
 
+
 .menu {
     position: absolute;
     top: 50px;
-    left: 0;
-    border-radius: 0 10px 10px 0;
-    height: auto;
-    width: 0;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: width 0.3s ease, opacity 0.3s ease;
+    height: 500px;
 }
 
-.menu.show {
-    opacity: 100%;
-    max-height: 100vh;
-    width: 250px;
+.menu.primary {
+    left: 0;
+    border-radius: 0 10px 10px 0;
     background-color: #EBEBEB;
+}
+
+.menu.secondary {
+    left: 220px;
+}
+
+
+/* COLLAPSIBLE */
+
+.collapsible {
+    width: 0;
+    transition: width 0.3s ease;
+    display: none;
+    pointer-events: none;
+}
+
+.collapsible.show {
+    width: 250px;
+    transition: width 0.3s ease;
+    display: block;
+    pointer-events: auto;
 }
 
 
 /* LINKS */
 
 .menu-link {
-    font-family: Arial, sans-serif;
-    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
     color: #4b4a4a;
     position: relative;
     text-decoration: none;
+    margin-left: 25px;
 }
 
 .menu-link::before {
@@ -56,6 +71,38 @@
 }
 
 
+/* BUTTON */
+
+.menu-button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: #4b4a4a;
+    position: relative;
+    text-decoration: none;
+    margin-left: 25px;
+    padding: 0;
+    border: none;
+    background: none;
+}
+  
+.menu-button::before {
+    background: #4b4a4a;
+    content: "";
+    inset: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+    border-radius: 3px;
+}
+  
+.menu-button:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
 /* ENTRY */
 
 .menu-entry {
@@ -71,20 +118,11 @@
     color: #000000;
     cursor: pointer;
     display: inline-block;
-    font-family: Clarkson,Helvetica,sans-serif;
-    font-size: 14px;
-    font-weight: 500;
     letter-spacing: 0;
-    line-height: 1em;
     margin: 0;
     opacity: 1;
     outline: 0;
-    padding: 1.5em 2.2em;
     position: relative;
-    text-align: center;
-    text-decoration: none;
-    text-rendering: geometricprecision;
-    text-transform: uppercase;
     transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
     user-select: none;
     -webkit-user-select: none;
@@ -111,6 +149,7 @@
     width: 100%;
 }
 
+.menu-entry.show:before,
 .menu-entry:hover:before {
     animation: opacityFallbackIn 0s step-start forwards;
     clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);

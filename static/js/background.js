@@ -3,7 +3,7 @@
 const background = document.querySelector('.background');
 
 window.addEventListener('scroll', () => {
-    const scrollDeg = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * (180 - 45) + 45;
+    const scrollDeg = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * (174 - 45) + 45;
 
     background.style.background = `linear-gradient(${scrollDeg}deg, hsl(53deg 86% 57%) 0%, hsl(23deg 100% 44%) 28%, hsl(327deg 100% 32%) 36%, hsl(239deg 100% 23%) 45%, hsl(0deg 0% 0%) 100%)`;
 });
