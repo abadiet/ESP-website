@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ESP</title>
+  <title>ENSMASTEEL</title>
   <link rel="stylesheet" type="text/css" href="/static/css/base.css">
   <link rel="stylesheet" type="text/css" href="/static/css/background.css">
   <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
@@ -18,17 +18,17 @@
     <div class="asso-name">ENSMASTEEL</div>
     <img src="/static/pictures/ensmasteel-logo.png" style="height: 65vh; width: auto; display: block; margin-left: auto; margin-right: auto; margin-top: 0;">
     <a href="#page-content" style="position: absolute; bottom: 5vh; left: 0%; right: 0%; height: 6vh;">
-      <img src="/static/pictures/scrolldown.gif" class="link" style="height: 8vh; width: auto; display: block; margin-left: auto; margin-right: auto; margin-bottom: 3vh;">
+      <img src="/static/pictures/scrolldown.gif" style="height: 8vh; width: auto; display: block; margin-left: auto; margin-right: auto; margin-bottom: 3vh; position: relative;">
     </a>
   </div>
 
-  <div class="fixed-header">
-    <iframe  src="/menu.html" style="border: none; width: 100vw; height: 90vh;"></iframe>
+  <div class="menu-container">
+    <iframe  src="/menu.html" style="border: none; width: 100%; height: 100%;"></iframe>
   </div>
 
   <div id="page-content" class="page-content">
 
-    <div class="row-wrap-zone">
+    <div class="row-wrap-container center-align">
         <br>
         <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
         <div class="text-zone">
@@ -57,18 +57,18 @@
     <br>
 
     <div style="width: 100%">
-        <span class="text title" style="text-align: center;">Nos partenaires</span>
+        <span class="text title centered">Nos partenaires</span>
         <br>
-        <span class="text" style="text-align: center;">Nous remercions nos partenaires pour leur soutien à nos projets</span>
+        <span class="text centered">Nous remercions nos partenaires pour leur soutien à nos projets</span>
         <br>
         <br>
     </div>
-    <div class="row-wrap-zone">
-        <div>
-            <img src="/static/pictures/ensma-logo.png" style="background-color: white; width: 250px; height: auto;">
+    <div class="row-wrap-container top-align">
+        <div class="picture-subtext-container">
+            <img src="/static/pictures/ensma-logo.png" class="picture row-display-wcaption no-edit" style="background-color: white;">
             <br>
             <br>
-            <span class="text title" style="font-size: x-large; text-align: center;">ISAE-ENSMA</span>
+            <span class="text caption title subtitle">ISAE-ENSMA</span>
         </div>
     </div>
     <br>
@@ -78,39 +78,27 @@
     <br>
 
     <div style="width: 100%">
-        <span class="text title" style="text-align: center;">Dévelopement</span>
+        <span class="text title centered">Dévelopement</span>
         <br>
-        <span class="text" style="text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">Voici les principaux pôles de développement effectués chaque année sur le projet de la Coupe de France de Robotique</span>
+        <span class="text centered">Voici les principaux pôles de développement effectués chaque année sur le projet de la Coupe de France de Robotique</span>
         <br>
         <br>
     </div>
-    <div class="row-wrap-zone">
-        <div style="width: 26.7%; max-width: 600px;">
-            <img src="/static/pictures/catia-logo.png" style="background-color: white; width: 300px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <br>
-            <span class="text title" style="font-size: x-large; text-align: center;">CAO</span>
-            <br>
-            <br>
-            <span class="text" style="text-align: center;">Catia V5 est notre logiciel de choix pour la conception méanique de notre robot. Le savoir faire que la formation de l'école nous offre nous permet de concevoir avec facilité nos robots.</span>
+    <div class="row-wrap-container top-align">
+        <div class="picture-subtext-container">
+            <img src="/static/pictures/catia-logo.png" class="picture row-display-wcaption no-edit" style="background-color: white;">
+            <span class="text caption title subtitle">CAO</span>
+            <span class="text caption">Catia V5 est notre logiciel de choix pour la conception méanique de notre robot. Le savoir faire que la formation de l'école nous offre nous permet de concevoir avec facilité nos robots.</span>
         </div>
-        <div style="width: 26.7%; max-width: 600px;">
-            <img src="/static/pictures/ensmasteel-electronique-2023.webp" style="width: 200px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <br>
-            <span class="text title" style="font-size: x-large; text-align: center;">Électronique</span>
-            <br>
-            <br>
-            <span class="text" style="text-align: center;">Chaque année nous concevons et fabriquons nos propres circuit imprimés afin de satifaire au plus au besoin de notre robot.</span>
+        <div class="picture-subtext-container">
+            <img src="/static/pictures/ensmasteel-electronique-2023.webp" class="picture row-display-wcaption no-edit">
+            <span class="text caption title subtitle">Électronique</span>
+            <span class="text caption">Chaque année nous concevons et fabriquons nos propres circuit imprimés afin de satifaire au plus au besoin de notre robot.</span>
         </div>
-        <div style="width: 26.7%; max-width: 600px;">
-            <img src="/static/pictures/cpp-logo.png" style="width: 200px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-            <br>
-            <br>
-            <span class="text title" style="font-size: x-large; text-align: center;">Code</span>
-            <br>
-            <br>
-            <span class="text" style="text-align: center;">Principalement le C++</span>
+        <div class="picture-subtext-container">
+            <img src="/static/pictures/cpp-logo.png" class="picture row-display-wcaption no-edit">
+            <span class="text caption title subtitle">Code</span>
+            <span class="text caption">Principalement le C++</span>
         </div>
     </div>
     <br>
@@ -120,22 +108,18 @@
     <br>
 
     <div style="width: 100%">
-        <span class="text title" style="text-align: center;">Participations à la coupe de France</span>
+        <span class="text title centered">Participations à la coupe de France</span>
         <br>
         <br>
     </div>
-    <div class="row-wrap-zone">
-        <div>
-            <img src="/static/pictures/ensmasteel-robot-2023.webp"  class="picture" style="width: 300px; height: auto;">
-            <br>
-            <br>
-            <a href="/ensmasteel/CDF2023.html" class="text title link" style="font-size: x-large; text-align: center;">2023</a>
+    <div class="row-wrap-container top-align">
+        <div class="picture-subtext-container">
+            <img src="/static/pictures/ensmasteel-robot-2023.webp" class="picture row-display-wcaption">
+            <a href="/ensmasteel/CDF2023.html"  class="text caption title subtitle link">2023</a>
         </div>
-        <div>
-            <img src="/static/pictures/ensmasteel-robot-2022.webp"  class="picture" style="width: 400px; height: auto;">
-            <br>
-            <br>
-            <a href="/ensmasteel/CDF2022.html" class="text title link" style="font-size: x-large; text-align: center;">2022</a>
+        <div class="picture-subtext-container">
+            <img src="/static/pictures/ensmasteel-robot-2022.webp" class="picture row-display-wcaption">
+            <a href="/ensmasteel/CDF2022.html" class="text caption title subtitle link">2022</a>
         </div>
     </div>
     <br>
@@ -144,26 +128,26 @@
     <br>
     <br>
 
-    <div class="row-wrap-zone">
+    <div class="row-wrap-container center-align">
         <br>
         <div class="text-zone">
             <span class="text title">Contacts</span>
             <br>
             <br>
             <br>
-            <div class="row-wrap-zone" style="gap: 30px; justify-content: left; flex-wrap: nowrap; margin: 0;">
+            <div class="row-wrap-container center-align" style="gap: 30px; justify-content: left; flex-wrap: nowrap; margin: 0;">
                 <img src="/static/pictures/location-icon.png" style="width: 30px;height: auto;">
                 <span class="text">1 Avenue Clément Ader, Chasseneuil du Poitou</span>
             </div>
             <br>
-            <div class="row-wrap-zone" style="gap: 30px; justify-content: left; flex-wrap: nowrap; margin: 0;">
+            <div class="row-wrap-container center-align" style="gap: 30px; justify-content: left; flex-wrap: nowrap; margin: 0;">
                 <img src="/static/pictures/mail-icon.png" style="width: 35px;height: auto;">
                 <a href="mailto:ensmasteel.clubrobotique@gmail.com" class="text link">ensmasteel.clubrobotique@gmail.com</a>
             </div>
             <br>
             <br>
             <br>
-            <div class="row-wrap-zone" style="gap: 30px; justify-content: left; flex-wrap: nowrap; margin: 0;">
+            <div class="row-wrap-container center-align" style="gap: 30px; justify-content: left; flex-wrap: nowrap; margin: 0;">
                 <a href="https://twitter.com/Ensmasteel"><img src="/static/pictures/twitter-icon.png" style="width: 30px;height: auto;"></a>
                 <a href="https://www.linkedin.com/company/association-ensmasteel/"><img src="/static/pictures/linkedin-icon.png" style="width: 30px;height: auto;"></a>
                 <a href="https://github.com/Ensmasteel"><img src="/static/pictures/github-icon.png" style="width: 30px;height: auto;"></a>

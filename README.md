@@ -7,5 +7,4 @@ Repo dedicated to the [ESP website](https://esp.ensma.fr/).
 </p>
 
 ## TODO
-- [ ] get rid of the menu iframe when the site is done
 - [ ] custom scrolling sidebar
