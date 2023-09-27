@@ -56,7 +56,7 @@ body {
     font-size: large;
     display: block;
     text-align: justify;
-    min-width: 300px;
+    min-width: 200px;
 }
 
 .text.title {
@@ -86,7 +86,12 @@ body {
     height: auto;
     border-radius: 20px;
     width: 60%;
-    min-width: 400px;
+    min-width: 350px;
+}
+
+.icon {
+    width: 30px;
+    height: auto;
 }
 
 .picture.row-display-wcaption { /* row display with a potential caption */
@@ -103,13 +108,13 @@ body {
     border-radius: 0;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .picture {
         max-width: 100%;
     }
 }
 
-@media (min-width: 770px) {
+@media (min-width: 769px) {
     .picture {
         max-width: 900px;
     }
@@ -125,6 +130,16 @@ body {
     margin-right: auto;
 }
 
+@media (max-width: 768px) { /* TODO to dirty */
+    .row-wrap-container > * {
+        margin-top: 20%; /* elements margin useful when wrapped */
+    }
+}
+
+.row-wrap-container-first-element {
+    margin-top: 0;
+}
+
 .row-wrap-container.top-align {
     align-items: start;
 }
@@ -135,6 +150,16 @@ body {
 
 .row-wrap-container.bottom-align {
     align-items: end;
+}
+
+.row-container {
+    width: 90%;
+    display: inline;
+    margin-left: 5%;
+}
+
+.row-container > * {
+    margin-right: 5%;
 }
 
 .picture-subtext-container {

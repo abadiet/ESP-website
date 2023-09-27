@@ -9,35 +9,30 @@
     position: absolute;
     top: 50px;
     height: 500px;
-}
 
-.menu.primary {
-    left: 0;
-    border-radius: 0 10px 10px 0;
-    background-color: #EBEBEB;
-}
-
-.menu.secondary {
-    left: 220px;
-}
-
-
-/* COLLAPSIBLE */
-
-.collapsible {
-    width: 0;
-    transition: width 0.3s ease;
     display: none;
     pointer-events: none;
+    overflow: hidden;
 }
 
-.collapsible.show {
-    width: 250px;
-    transition: width 0.3s ease;
+.menu.show {
     display: block;
     pointer-events: auto;
 }
 
+.menu.primary {
+    left: 0;
+    width: 240px;
+    border-radius: 0 10px 10px 0;
+    background-color: #EBEBEB;
+
+    transition: width 0.3s ease;
+}
+
+.menu.secondary {
+    left: 220px;
+    width: 460px;
+}
 
 /* LINKS */
 
@@ -148,8 +143,7 @@
     width: 100%;
 }
 
-.menu-entry.show:before,
-.menu-entry:hover:before {
+.menu-entry.show:before {
     animation: opacityFallbackIn 0s step-start forwards;
     clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
 }
