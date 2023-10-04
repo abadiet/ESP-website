@@ -1,61 +1,179 @@
-/* BACKGROUND */
+const STAR_COLOR = '#fff';
+const STAR_SIZE = 3;
+const STAR_MIN_SCALE = 0.2;
+const OVERFLOW_THRESHOLD = 50;
+const STAR_COUNT = ( window.innerWidth + window.innerHeight ) / 8;
 
-const background = document.querySelector('.background');
+const canvas = document.getElementById('stars-container');
+const context = canvas.getContext('2d');
 
-window.addEventListener('scroll', () => {
-    const scrollDeg = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * (174.5 - 45) + 45;
+let scale = 1, // device pixel ratio
+    width = 1,
+    height = 1;
 
-    background.style.background = `linear-gradient(${scrollDeg}deg, hsl(53deg 86% 57%) 0%, hsl(23deg 100% 44%) 28%, hsl(327deg 100% 32%) 36%, hsl(239deg 100% 23%) 45%, hsl(0deg 0% 0%) 100%)`;
-});
+let stars = [];
 
+let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
 
-/* SHAPES */
-
-const shapeContainer = document.getElementById("shape-container");
-
-function moveShapeRandomly(shape) {
-    const size = Math.random() * (5 - 0.5) + 0.5;
-    shape.style.width = `${size}%`;
-    shape.style.height = `${size}%`;
-
-    const randomX = Math.random() * (100 - size);
-    const randomY = Math.random() * (100 - size);
-
-    const borderRadii = [];
-    for (let i = 0; i < 8; i++) {
-        borderRadii.push(Math.random() * (80 - 20) + 20);
-    }
-
-    shape.style.transform = `translate(${randomX}%, ${randomY}%)`;
-    shape.style.borderRadius = `${borderRadii[0]}% ${borderRadii[1]}% ${borderRadii[2]}% ${borderRadii[3]}% / ${borderRadii[4]}% ${borderRadii[5]}% ${borderRadii[6]}% ${borderRadii[7]}%`;
+function generate() {
+  for( let i = 0; i < STAR_COUNT; i++ ) {
+       stars.push({
+           x: 0,
+           y: 0,
+           z: Math.random() * ( 1 - STAR_MIN_SCALE ) + STAR_MIN_SCALE
+       });
+  }
 }
 
-function createShape() {
-    const shape = document.createElement("div");
-    shape.classList.add("shape");
-
-    const size = Math.random() * (5 - 1) + 1;
-    const xPos = Math.random() * (100 - size);
-    const yPos = Math.random() * (100 - size);
-
-    shape.style.width = `${size}%`;
-    shape.style.height = `${size}%`;
-    shape.style.left = `${xPos}%`;
-    shape.style.top = `${yPos}%`;
-
-    const animationDuration = Math.random() * (3 - 0.5) + 0.5;
-    shape.style.animation = `shape-animation ${animationDuration}s infinite`;
-    shape.style.transition = `transform ${animationDuration}s ease-in-out, border-radius ${animationDuration}s ease-in-out, width ${animationDuration}s ease-in-out, height ${animationDuration}s ease-in-out`;
-
-    shapeContainer.appendChild(shape);
-
-    moveShapeRandomly(shape);
-
-    setInterval(function () {
-        moveShapeRandomly(shape);
-    }, animationDuration * 1000);
+function placeStar( star ) {
+   star.x = Math.random() * width;
+   star.y = Math.random() * height;
 }
 
-for (let i = 0; i < 20; i++) {
-    createShape();
+function recycleStar( star ) {
+
+ let direction = 'z';
+
+ let vx = Math.abs( velocity.x ),
+     vy = Math.abs( velocity.y );
+
+ if( vx > 1 || vy > 1 ) {
+   let axis;
+
+   if( vx > vy ) {
+     axis = Math.random() < vx / ( vx + vy ) ? 'h' : 'v';
+   }
+   else {
+     axis = Math.random() < vy / ( vx + vy ) ? 'v' : 'h';
+   }
+
+   if( axis === 'h' ) {
+     direction = velocity.x > 0 ? 'l' : 'r';
+   }
+   else {
+     direction = velocity.y > 0 ? 't' : 'b';
+   }
+ }
+ 
+ star.z = STAR_MIN_SCALE + Math.random() * ( 1 - STAR_MIN_SCALE );
+
+ if( direction === 'z' ) {
+   star.z = 0.1;
+   star.x = Math.random() * width;
+   star.y = Math.random() * height;
+ }
+ else if( direction === 'l' ) {
+   star.x = -OVERFLOW_THRESHOLD;
+   star.y = height * Math.random();
+ }
+ else if( direction === 'r' ) {
+   star.x = width + OVERFLOW_THRESHOLD;
+   star.y = height * Math.random();
+ }
+ else if( direction === 't' ) {
+   star.x = width * Math.random();
+   star.y = -OVERFLOW_THRESHOLD;
+ }
+ else if( direction === 'b' ) {
+   star.x = width * Math.random();
+   star.y = height + OVERFLOW_THRESHOLD;
+ }
+
 }
+
+function resize() {
+
+  const newscale = window.devicePixelRatio || 1;
+  const newwidth = window.innerWidth * newscale;
+  const newheight = window.innerHeight * newscale;
+
+  if (Math.abs(newwidth - width) / width > 0.2 || Math.abs(newheight - height) / height > 0.2) {
+    scale = newscale;
+    width = newwidth;
+    height = newheight;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    stars.forEach( placeStar );
+  }
+}
+
+function step() {
+
+ context.clearRect( 0, 0, width, height );
+
+ update();
+ render();
+
+ requestAnimationFrame( step );
+
+}
+
+function update() {
+
+ velocity.tx *= 0.96;
+ velocity.ty *= 0.96;
+
+ velocity.x += ( velocity.tx - velocity.x ) * 0.8;
+ velocity.y += ( velocity.ty - velocity.y ) * 0.8;
+
+ stars.forEach( ( star ) => {
+
+   star.x += velocity.x * star.z;
+   star.y += velocity.y * star.z;
+
+   star.x += ( star.x - width/2 ) * velocity.z * star.z;
+   star.y += ( star.y - height/2 ) * velocity.z * star.z;
+   star.z += velocity.z;
+ 
+   // recycle when out of bounds
+   if( star.x < -OVERFLOW_THRESHOLD || star.x > width + OVERFLOW_THRESHOLD || star.y < -OVERFLOW_THRESHOLD || star.y > height + OVERFLOW_THRESHOLD ) {
+     recycleStar( star );
+   }
+
+ } );
+
+}
+
+function render() {
+
+ stars.forEach( ( star ) => {
+
+   context.beginPath();
+   context.lineCap = 'round';
+   context.lineWidth = STAR_SIZE * star.z * scale;
+   context.globalAlpha = 0.5 + 0.5*Math.random();
+   context.strokeStyle = STAR_COLOR;
+
+   context.beginPath();
+   context.moveTo( star.x, star.y );
+
+   var tailX = velocity.x * 2,
+       tailY = velocity.y * 2;
+
+   // stroke() wont work on an invisible line
+   if( Math.abs( tailX ) < 0.1 ) tailX = 0.5;
+   if( Math.abs( tailY ) < 0.1 ) tailY = 0.5;
+
+   context.lineTo( star.x + tailX, star.y + tailY );
+
+   context.stroke();
+
+ } );
+
+}
+
+let previousScroll = window.scrollY;
+
+function scroll() {
+   velocity.ty += ( (previousScroll - window.scrollY) * 0.015 / scale );
+   previousScroll = window.scrollY;
+}
+
+generate();
+resize();
+step();
+
+window.addEventListener('resize', resize);
+window.addEventListener('scroll', scroll);
