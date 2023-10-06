@@ -1,3 +1,5 @@
+/* BACKGROUND ASSO HELLO */
+
 const STAR_COLOR = '#fff';
 const STAR_SIZE = 3;
 const STAR_MIN_SCALE = 0.2;
@@ -13,7 +15,7 @@ let scale = 1, // device pixel ratio
 
 let stars = [];
 
-let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
+let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: Math.pow((1.7 / (window.innerWidth + window.innerHeight)), 1.02) };
 
 function generate() {
   for( let i = 0; i < STAR_COUNT; i++ ) {
@@ -167,7 +169,7 @@ function render() {
 let previousScroll = window.scrollY;
 
 function scroll() {
-   velocity.ty += ( (previousScroll - window.scrollY) * 0.015 / scale );
+   velocity.ty += ( (previousScroll - window.scrollY) / window.innerHeight * 20.0 );
    previousScroll = window.scrollY;
 }
 
@@ -177,3 +179,23 @@ step();
 
 window.addEventListener('resize', resize);
 window.addEventListener('scroll', scroll);
+
+
+/* BACKGROUND PAGE CONTENT */
+
+const background_page = document.querySelector('.background-page');
+const page_content = document.getElementById("page-content");
+
+window.addEventListener('scroll', () => {
+    if (page_content.getBoundingClientRect().top < window.innerHeight) {
+      background_page.style.width = '101%';
+      background_page.style.height = '101%';
+      background_page.style.borderRadius = '0';
+      background_page.style.backgroundColor = 'var(--background-color-main)';
+    } else {
+      background_page.style.width = '0';
+      background_page.style.height = '0';
+      background_page.style.backgroundColor = 'var(--background-color-second)';
+      background_page.style.borderRadius = '50%';
+    }
+});

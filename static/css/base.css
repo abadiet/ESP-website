@@ -3,11 +3,41 @@ body {
     padding: 0;
     height: 100%;
     overflow-x: hidden;
+    padding-bottom: constant(safe-area-inset-bottom); /* Fallback for older browsers */
+    padding-bottom: env(safe-area-inset-bottom); /* Modern browsers */
 }
 
 @font-face {
     font-family: outlined;
     src: url('/static/fonts/outlined.ttf');
+}
+
+:root {
+    --viewport-height: 100vh;   /* default */
+
+    --text-color-main: #1d1d1f;
+    --text-color-second: #f5f5f7;
+
+    --margin-side: 5vw;
+    --margin-content: 20vh;
+    --margin-element-main: 5vw;
+    --margin-element-second: 2.5vw;
+    --margin-cr: 2vh;
+}
+
+.color-inverted {
+    --text-color: var(--text-color-second) !important;
+    --background-color: var(--background-color-second) !important;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.gap-second {
+    gap: var(--margin-element-second) !important;
+}
+
+.gap-cr {
+    gap: var(--margin-cr) !important;
 }
 
 
@@ -18,7 +48,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 400vh;
 }
 
 .asso-name {
@@ -29,6 +59,36 @@ body {
     font-size: 8vw;
 }
 
+.asso-logo {
+    height: 65vh;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+
+.asso-scrolldown {
+    position: absolute;
+    top: calc(var(--viewport-height) * 0.86);
+    height: calc(var(--viewport-height) * 0.14);
+    width: 100%;
+}
+.asso-scrolldown > * {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(var(--viewport-height) * 0.09);
+    width: auto;
+}
+
+
+/* PAGE CONTENT */
+
+/*.page-content {
+}*/
 
 /* SCROLL REVEAL */
 
@@ -46,16 +106,12 @@ body {
 
 /* TEXT */
 
-/* .text-container {
-
-}*/
-
 .text {
     font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
     font-size: large;
     display: block;
     text-align: justify;
+    width: 100%;
 }
 
 .text.title {
@@ -95,17 +151,31 @@ body {
 
 /* CONTAINERS */
 
+/* content */
+
+.content-container {
+    width: calc(100% - 2 * var(--margin-side));
+    padding-top: calc(var(--margin-content) / 2);
+    padding-bottom: calc(var(--margin-content) / 2);
+    padding-left: var(--margin-side);
+    padding-right: var(--margin-side);
+
+    --text-color: var(--text-color-main);
+    --background-color: var(--background-color-main);
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+
 /* row wrap */
 
 .row-wrap-container {
-    width: 90%;
-    margin-left: 5%;
-
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: 5%;
+
+    gap: var(--margin-element-main);
 }
 
 .row-wrap-container.top-align {
@@ -114,7 +184,6 @@ body {
 
 .row-wrap-container > * {
     flex: 1 1 0px;
-    margin-bottom: 5%;
 }
 
 .row-wrap-container.picture-text > .picture {
@@ -131,34 +200,55 @@ body {
 /* column */
 
 .column-container {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: nowrap;
+
+    gap: var(--margin-element-main);
 }
+
+.column-container > * {
+    flex: 1 1 0px;
+}
+
+.column-container.left-align {
+    align-items: start;   
+}
+
 
 /* row */
 
 .row-container {
-    width: 90%;
-    margin-left: 5%;
-
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     flex-wrap: nowrap;
-    gap: 5%;
+
+    gap: var(--margin-element-main);
 }
 
 .row-container.top-align {
     align-items: start;
 }
 
+.row-container.right-align {
+    justify-content: end;
+}
+
 .row-container > * {
     flex: 1 1 0px;
-    margin-bottom: 5%;
 }
+
 .row-container.noflex > * {
     flex: 0;
+}
+
+.row-container.nogap > * {
+    gap: 0;
 }
 
 
@@ -167,7 +257,7 @@ body {
 .link {
     position: relative;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-color);
     min-width: 0;
 }
 
@@ -177,7 +267,7 @@ body {
     width: 100%;
     height: 4px;
     border-radius: 4px;
-    background-color: #ffffff;
+    background-color: var(--text-color);
     bottom: 0;
     left: 0;
     transform-origin: right;

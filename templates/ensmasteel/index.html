@@ -7,19 +7,16 @@
   <link rel="stylesheet" type="text/css" href="/static/css/base.css">
   <link rel="stylesheet" type="text/css" href="/static/css/background.css">
   <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/bottom.css">
+  <script src="/static/js/viewport.js"></script>
 </head>
 <body>
 
-  <div class="background">
-    <canvas id="stars-container" style="width: 100%; height: 100%;"></canvas>
-  </div>
-  <script src="/static/js/background.js"></script>
-
   <div class="asso-hello">
     <div class="asso-name">ENSMASTEEL</div>
-    <img src="/static/pictures/ensmasteel-logo.png" style="height: 65vh; width: auto; max-width: 100%; display: block; margin-left: auto; margin-right: auto; margin-top: 0;">
-    <a href="#page-content" style="position: absolute; bottom: 5vh; left: 0%; right: 0%; height: 6vh;">
-      <img src="/static/pictures/scrolldown.gif" style="height: 8vh; width: auto; display: block; margin-left: auto; margin-right: auto; margin-bottom: 3vh; position: relative;">
+    <img src="/static/pictures/ensmasteel-logo.png" class="asso-logo">
+    <a href="#page-content" class="asso-scrolldown">
+      <img src="/static/pictures/scrolldown.gif">
     </a>
   </div>
 
@@ -27,131 +24,114 @@
     <iframe  src="/menu.html" style="border: none; width: 100%; height: 100%;"></iframe>
   </div>
 
-  <div id="page-content">
+  <div id="page-content" class="page-content">
 
-    <div class="row-wrap-container picture-text">
-        <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
-        <div class="text-container">
-            <span class="text title">Qui sommes nous ?</span>
-            <br>
-            <br>
-            <br>
-            <span class="text">Passionnés de robotique et d'ingénierie, nous sommes un groupe d'étudiants déterminés à relever les défis technologiques de demain. Chaque année, nous nous préparons avec enthousiasme pour participer à la Coupe de France de Robotique, l'événement phare du domaine en France.</span>
-            <br>
-            <br>
-            <span class="text">À travers nos projets de conception, de construction et de programmation de robots compétitifs, nous mettons en pratique nos connaissances acquises au sein de notre formation d'ingénieur. La Coupe de France de Robotique est l'occasion pour nous de démontrer nos compétences techniques, notre esprit d'équipe et notre créativité.</span>
-            <br>
-            <br>
-            <span class="text">Nous sommes fiers de représenter l'ISAE-ENSMA lors de cette compétition. Notre objectif est de repousser les limites de la robotique en développant des solutions innovantes et performantes.</span>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div style="width: 100%">
-        <span class="text title centered">Nos partenaires</span>
-        <br>
-        <span class="text centered">Nous remercions nos partenaires pour leur soutien à nos projets</span>
-        <br>
-        <br>
-    </div>
-    <div class="row-wrap-container top-align pictures-captions">
-        <div class="column-container">
-            <img src="/static/pictures/ensma-logo.png" class="picture no-edit" style="background-color: white;">
-            <br>
-            <br>
-            <span class="text caption title subtitle">ISAE-ENSMA</span>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div style="width: 100%">
-        <span class="text title centered">Dévelopement</span>
-        <br>
-        <span class="text centered">Voici les principaux pôles de développement effectués chaque année sur le projet de la Coupe de France de Robotique</span>
-        <br>
-        <br>
-    </div>
-    <div class="row-wrap-container top-align pictures-captions">
-        <div class="column-container">
-            <img src="/static/pictures/catia-logo.png" class="picture no-edit" style="background-color: white;">
-            <span class="text caption title subtitle">CAO</span>
-            <span class="text caption">Catia V5 est notre logiciel de choix pour la conception méanique de notre robot. Le savoir faire que la formation de l'école nous offre nous permet de concevoir avec facilité nos robots.</span>
-        </div>
-        <div class="column-container">
-            <img src="/static/pictures/ensmasteel-electronique-2023.webp" class="picture no-edit">
-            <span class="text caption title subtitle">Électronique</span>
-            <span class="text caption">Chaque année nous concevons et fabriquons nos propres circuit imprimés afin de satifaire au plus au besoin de notre robot.</span>
-        </div>
-        <div class="column-container">
-            <img src="/static/pictures/cpp-logo.png" class="picture no-edit">
-            <span class="text caption title subtitle">Code</span>
-            <span class="text caption">Principalement le C++</span>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div style="width: 100%">
-        <span class="text title centered">Participations à la coupe de France</span>
-        <br>
-        <br>
-    </div>
-    <div class="row-wrap-container top-align pictures-captions">
-        <div class="column-container">
-            <img src="/static/pictures/ensmasteel-robot-2023.webp" class="picture">
-            <a href="/ensmasteel/CDF2023.html"  class="text caption title subtitle link">2023</a>
-        </div>
-        <div class="column-container">
-            <img src="/static/pictures/ensmasteel-robot-2022.webp" class="picture">
-            <a href="/ensmasteel/CDF2022.html" class="text caption title subtitle link">2022</a>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div class="row-wrap-container picture-text">
-        <div class="text-zone">
-            <span class="text title">Contacts</span>
-            <br>
-            <div class="row-container">
-                <img src="/static/pictures/location-icon.png" class="icon">
-                <span class="text">1 Avenue Clément Ader, Chasseneuil du Poitou</span>
+    <div class="content-container">
+        <div class="row-wrap-container picture-text">
+            <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
+            <div class="column-container left-align gap-cr">
+                <span class="text title">Qui sommes nous ?</span>
+                <span class="text">Passionnés de robotique et d'ingénierie, nous sommes un groupe d'étudiants déterminés à relever les défis technologiques de demain. Chaque année, nous nous préparons avec enthousiasme pour participer à la Coupe de France de Robotique, l'événement phare du domaine en France.</span>
+                <span class="text">À travers nos projets de conception, de construction et de programmation de robots compétitifs, nous mettons en pratique nos connaissances acquises au sein de notre formation d'ingénieur. La Coupe de France de Robotique est l'occasion pour nous de démontrer nos compétences techniques, notre esprit d'équipe et notre créativité.</span>
+                <span class="text">Nous sommes fiers de représenter l'ISAE-ENSMA lors de cette compétition. Notre objectif est de repousser les limites de la robotique en développant des solutions innovantes et performantes.</span>
             </div>
-            <div class="row-container">
-                <img src="/static/pictures/mail-icon.png" class="icon">
-                <div style="flex: 0 1 0px;">
-                    <a href="mailto:ensmasteel.clubrobotique@gmail.com" class="text link" style="font-size: medium;">ensmasteel.clubrobotique@gmail.com</a>
+        </div>
+    </div>
+
+    <div class="content-container color-inverted">
+        <div class="column-container">
+            <div class="column-container gap-cr">
+                <span class="text title centered">Nos partenaires</span>
+                <span class="text centered">Nous remercions nos partenaires pour leur soutien à nos projets</span>
+            </div>
+            <div class="row-wrap-container top-align pictures-captions gap-second">
+                <div class="column-container gap-cr">
+                    <img src="/static/pictures/ensma-logo.png" class="picture no-edit" style="background-color: white;">
+                    <span class="text caption title subtitle">ISAE-ENSMA</span>
                 </div>
             </div>
-            <br>
-            <div class="row-container noflex">
-                <a href="https://twitter.com/Ensmasteel"><img src="/static/pictures/twitter-icon.png" class="icon"></a>
-                <a href="https://www.linkedin.com/company/association-ensmasteel/"><img src="/static/pictures/linkedin-icon.png" class="icon"></a>
-                <a href="https://github.com/Ensmasteel"><img src="/static/pictures/github-icon.png" class="icon"></a>
-                <a href="https://www.youtube.com/@ENSMASTEEL"><img src="/static/pictures/youtube-icon.png" class="icon"></a>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="column-container">
+            <div class="column-container gap-cr">
+                <span class="text title centered">Développement</span>
+                <span class="text centered">Voici les principaux pôles de développement effectués chaque année sur le projet de la Coupe de France de Robotique</span>
+            </div>
+            <div class="row-wrap-container top-align pictures-captions gap-second">
+                <div class="column-container gap-cr">
+                    <img src="/static/pictures/catia-logo.png" class="picture no-edit" style="background-color: white;">
+                    <span class="text caption title subtitle">CAO</span>
+                    <span class="text caption">Catia V5 est notre logiciel de choix pour la conception méanique de notre robot. Le savoir faire que la formation de l'école nous offre nous permet de concevoir avec facilité nos robots.</span>
+                </div>
+                <div class="column-container gap-cr">
+                    <img src="/static/pictures/ensmasteel-electronique-2023.webp" class="picture no-edit">
+                    <span class="text caption title subtitle">Électronique</span>
+                    <span class="text caption">Chaque année nous concevons et fabriquons nos propres circuit imprimés afin de satifaire au plus au besoin de notre robot.</span>
+                </div>
+                <div class="column-container gap-cr">
+                    <img src="/static/pictures/cpp-logo.png" class="picture no-edit">
+                    <span class="text caption title subtitle">Code</span>
+                    <span class="text caption">Principalement le C++</span>
+                </div>
             </div>
         </div>
-        <img src="/static/pictures/ensma.webp" class="picture">
+    </div>
+
+    <div class="content-container color-inverted">
+        <div class="column-container">
+            <div class="column-container gap-cr">
+                <span class="text title centered">Participations à la coupe de France</span>
+            </div>
+            <div class="row-wrap-container top-align pictures-captions gap-second">
+                <div class="column-container gap-cr">
+                    <img src="/static/pictures/ensmasteel-robot-2023.webp" class="picture">
+                    <a href="/ensmasteel/CDF2023.html"  class="text caption title subtitle link">2023</a>
+                </div>
+                <div class="column-container gap-cr">
+                    <img src="/static/pictures/ensmasteel-robot-2022.webp" class="picture">
+                    <a href="/ensmasteel/CDF2022.html" class="text caption title subtitle link">2022</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="row-wrap-container picture-text">
+            <div class="column-container left-align gap-second">
+                <span class="text title">Contacts</span>
+                <div class="row-container gap-cr">
+                    <img src="/static/pictures/location-icon-black.png" class="icon">
+                    <span class="text">1 Avenue Clément Ader, Chasseneuil du Poitou</span>
+                </div>
+                <div class="row-container gap-cr">
+                    <img src="/static/pictures/mail-icon-black.png" class="icon">
+                    <div style="flex: 0 1 0px;">
+                        <a href="mailto:ensmasteel.clubrobotique@gmail.com" class="text link" style="font-size: medium;">ensmasteel.clubrobotique@gmail.com</a>
+                    </div>
+                </div>
+                <div class="row-container noflex gap-cr">
+                    <a href="https://twitter.com/Ensmasteel"><img src="/static/pictures/twitter-icon-black.png" class="icon"></a>
+                    <a href="https://www.linkedin.com/company/association-ensmasteel/"><img src="/static/pictures/linkedin-icon-black.png" class="icon"></a>
+                    <a href="https://github.com/Ensmasteel"><img src="/static/pictures/github-icon-black.png" class="icon"></a>
+                    <a href="https://www.youtube.com/@ENSMASTEEL"><img src="/static/pictures/youtube-icon-black.png" class="icon"></a>
+                </div>
+            </div>
+            <img src="/static/pictures/ensma.webp" class="picture">
+        </div>
     </div>
 
   </div>
 
-  <iframe src="/bottom.html" style="border: none; width: 100vw; height: auto;"></iframe>
+  <iframe src="/bottom.html" class="bottom-bar"></iframe>
 
   <script src="/static/js/scroll-anchor.js"></script>
+
+  <div class="background-hello">
+    <canvas id="stars-container" style="width: 100%; height: 100%;"></canvas>
+  </div>
+  <div class="background-page"></div>
+  <script src="/static/js/background.js"></script>
 </body>
 </html>
