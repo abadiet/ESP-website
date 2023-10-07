@@ -17,6 +17,8 @@ let stars = [];
 
 let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: Math.pow((1.7 / (window.innerWidth + window.innerHeight)), 1.02) };
 
+let requestAnimID;
+
 function generate() {
   for( let i = 0; i < STAR_COUNT; i++ ) {
        stars.push({
@@ -108,7 +110,7 @@ function step() {
  update();
  render();
 
- requestAnimationFrame( step );
+ requestAnimID = requestAnimationFrame( step );
 
 }
 
@@ -184,7 +186,9 @@ window.addEventListener('scroll', scroll);
 /* BACKGROUND PAGE CONTENT */
 
 const background_page = document.querySelector('.background-page');
+const background_hello = document.getElementById('background-hello');
 const page_content = document.getElementById("page-content");
+const asso_hello = document.getElementById("asso-hello");
 
 window.addEventListener('scroll', () => {
     if (page_content.getBoundingClientRect().top < window.innerHeight) {
@@ -198,4 +202,13 @@ window.addEventListener('scroll', () => {
       background_page.style.backgroundColor = 'var(--background-color-second)';
       background_page.style.borderRadius = '50%';
     }
+
+    if (page_content.getBoundingClientRect().top <= 0.5 && page_content.getBoundingClientRect().top >= 0) {
+      asso_hello.style.display = "none";
+      window.scrollTo(0, 0);
+      background_hello.style.display = "none";
+      cancelAnimationFrame(requestAnimID);
+      stars = [];
+    }
+
 });
