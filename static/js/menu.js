@@ -1,6 +1,6 @@
 const primaryCloseWidth = "0px";
-const primaryOpenWidth = "240px";
-const primaryLargeWidth = "460px";
+const primaryOpenWidth = "220px";
+const primaryLargeWidth = "400px";
 const collapsibleTransitionTime = 300;
 
 parent.window.onload = function () {    // wait for parent to be fully loaded
@@ -85,7 +85,7 @@ if (Math.min(window.screen.width, window.screen.height) < 768 || navigator.userA
     /* PHONE */
 
     menuButton.addEventListener('click', function() {
-        primaryMenu.style.width = primaryOpenWidth;
+        closeSecondaries();
         menuButton.classList.toggle('show');
         primaryMenu.classList.toggle('show');
         resizeIframe();

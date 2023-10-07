@@ -84,7 +84,6 @@ body {
     width: auto;
 }
 
-
 /* PAGE CONTENT */
 
 /*.page-content {
@@ -130,6 +129,18 @@ body {
 .text.caption {
     margin-top: 10px;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .text {
+        font-size: medium;
+    }
+    .text.title {
+        font-size: x-large;
+    }
+    .text.title.subtitle {
+        font-size: large;
+    }
 }
 
 
@@ -254,11 +265,16 @@ body {
 
 /* LINKS */
 
-.link {
+.link { /* works for links and buttons */
+    width: auto;
+    display: initial;
     position: relative;
     text-decoration: none;
     color: var(--text-color);
     min-width: 0;
+    border: none;
+    background: none;
+    padding: 0;
 }
 
 .link::before {
@@ -273,9 +289,18 @@ body {
     transform-origin: right;
     transform: scaleX(0);
     transition: transform .3s ease-in-out;
+    border-radius: 3px;
 }
 
 .link:hover::before {
     transform-origin: left;
     transform: scaleX(1);
+}
+
+/*.link.bold-link {
+}*/
+  
+.link.bold-link::before {
+    top: 0;
+    height: 100%;
 }
