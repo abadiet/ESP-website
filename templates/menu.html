@@ -7,32 +7,19 @@
         <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
     </head>
 <body style="overflow: hidden;">
-    <button id="collapsible-menu" type="button" class="menu-entry"></button>
-    <div id="menu-content" class="menu primary">
-        <br>
-        <br>
-        <a href="/" class="text menu-text link" target="_parent">Ensma Space Project</a>
-        <br>
-        <br>
-        <a href="/ensmasteel/" class="text menu-text link" target="_parent">Ensmasteel</a>
-        <br>
-        <br>
-        <button id="fusex" type="button" class="text menu-text link bold-link">Fusées Expérimentales</button>
-        <br>
-        <br>
-    </div>
-    <div id="fusex-content" class="menu secondary">
-        <br>
-        <br>
-        <a href="/fusex.html" class="text menu-text link" target="_parent">Fusées Expérimentales</a>
-        <br>
-        <br>
-        <a href="/" class="text menu-text link" target="_parent">Lorem ipsum</a>
-        <br>
-        <br>
-        <a href="/" class="text menu-text link" target="_parent">dolor sit amet</a>
-        <br>
-        <br>
+    <div id="menu-open" class="menu-open color-inverted">
+        <div class="row-container">
+            <div id="primary-menu" class="menu show">
+                <a href="/" class="text link" target="_parent">Ensma Space Project</a>
+                <a href="/ensmasteel/" class="text link" target="_parent">Ensmasteel</a>
+                <button id="fusex" type="button" class="text link bold-link">Fusées Expérimentales</button>
+            </div>
+            <div id="fusex-menu" class="menu">
+                <a href="/fusex.html" class="text link" target="_parent">Fusées Expérimentales</a>
+                <a href="/" class="text link" target="_parent">Lorem ipsum</a>
+                <a href="/" class="text link" target="_parent">dolor sit amet</a>
+            </div>
+        </div>
     </div>
     <script src="/static/js/menu.js"></script>
 </body>

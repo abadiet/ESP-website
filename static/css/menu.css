@@ -1,10 +1,136 @@
+:root {
+    --menu-bar-height: 4vh;
+}
+
+
+/* WHOLE CONTAINER */
+
 .menu-container {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: var(--menu-bar-height);
     z-index: 999;
+    background-color: #16161700;
+    transition: background-color 0.5s ease;
+}
+.menu-container.show {
+    height: 100vh;
 }
 
+
+/* BAR */
+
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: var(--menu-bar-height);
+    z-index: -1;
+    background-color: #161617cf;
+    backdrop-filter: saturate(180%) blur(10px);
+    font-weight: bold;
+    gap: 10px;
+}
+.menu-bar .text {
+    font-size: calc(var(--menu-bar-height) * 0.5);
+}
+
+.menu-bar-logo {
+    height: calc(var(--menu-bar-height) * 0.7);
+}
+*
+
+/* BUTTON */
+
+.menu-button {
+    position: absolute;
+    z-index: 1000;
+    top: calc(var(--menu-bar-height) * 0.3);
+    right: 2vw;
+    --menu-button-height: calc(var(--menu-bar-height) * 0.25);
+    height: var(--menu-button-height);
+    width: calc(var(--menu-button-height) * 2);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color-second);
+}
+
+.menu-button.close .line:first-child {
+    --translation: calc(var(--menu-button-height) / 2);
+    --rotation: 45deg;
+    animation: moveAndRotate 0.2s ease-in-out forwards;
+}
+
+.menu-button.open .line:first-child {
+    --translation: calc(var(--menu-button-height) / 2);
+    --rotation: 45deg;
+    animation: rotateAndMove 0.2s ease-in-out forwards;
+}
+
+.menu-button.close .line:last-child {
+    --translation: calc(var(--menu-button-height) / -2);
+    --rotation: -45deg;
+    animation: moveAndRotate 0.2s ease-in-out forwards;
+}
+
+.menu-button.open .line:last-child {
+    --translation: calc(var(--menu-button-height) / -2);
+    --rotation: -45deg;
+    animation: rotateAndMove 0.2s ease-in-out forwards;
+}
+
+@keyframes moveAndRotate {
+    0% {
+        transform: translateY(0);
+    }
+    60% {
+        transform: translateY(var(--translation));
+    }
+    100% {
+        transform: translateY(var(--translation)) rotate(var(--rotation));
+    }
+}
+
+@keyframes rotateAndMove {
+    0% {
+        transform: translateY(var(--translation)) rotate(var(--rotation));
+    }
+    40% {
+        transform: translateY(var(--translation));
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* MENU */
+
+.menu-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 0vh;
+    z-index: 1;
+    transition: height 0.3s ease;
+}
+.menu-open.show {
+    height: 100vh;
+}
 
 .menu {
     position: absolute;
@@ -15,80 +141,6 @@
     pointer-events: none;
     overflow: hidden;
 }
-
 .menu.show {
-    display: block;
-    pointer-events: auto;
-}
-
-.menu.primary {
-    left: 0;
-    border-radius: 0 10px 10px 0;
-    background-color: #EBEBEB;
-
-    transition: width 0.3s ease;
-}
-
-.menu.secondary {
-    left: 190px;
-}
-
-
-/* TEXT */
-
-.menu-text {
-    --text-color: #4b4a4a;
-    margin-left: 10px;
-}
-
-
-/* ENTRY */
-
-.menu-entry {
-    appearance: none;
-    border-radius: 0 0 10px 0;
-    background-color: #4b4a4a;
-    background-image: url('/static/pictures/menu-close.png');
-    background-size: 60px 60px;
-    width: 65px;
-    height: 60px;
-    border-width: 0;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
-    display: inline-block;
-    letter-spacing: 0;
-    margin: 0;
-    opacity: 1;
-    outline: 0;
-    position: relative;
-    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    white-space: nowrap;
-}
-
-.menu-entry:before {
-    animation: opacityFallbackOut .5s step-end forwards;
-    backface-visibility: hidden;
-    background-color: #EBEBEB;
-    border-radius: 0 0 10px 0;
-    background-image: url('/static/pictures/menu-open.png');
-    background-size: 60px 60px;
-    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
-    content: "";
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transform: translateZ(0);
-    transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
-    width: 100%;
-}
-
-.menu-entry.show:before {
-    animation: opacityFallbackIn 0s step-start forwards;
-    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+    display: auto;
 }
