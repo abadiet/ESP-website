@@ -1,17 +1,48 @@
-parent.window.onload = function () {    // wait for parent to be fully loaded
+const menuOpenTransitionDuration = 400;
+const elementsShowInterval = 30;
+const elementsOpactityTransitionDuration = 300;
 
-/* IFRAME RESIZE */
+parent.window.onload = function () {    // wait for parent to be fully loaded
 
 const menuContainer = parent.document.getElementById("menu-container");
 const menuButton = parent.document.getElementById('menu-button');
 const menuOpen = document.getElementById('menu-open');
+const primaryMenu = document.getElementById('primary-menu');
 const fusexMenu = document.getElementById('fusex-menu');
 
+function menuTransition(menu) {
+    menu.classList.add('show');
+    _menuTransition_rec(menu, 0);
+}
 
-/* COLLAPSIBLES */
+function _menuTransition_rec(menu, index) {
+    if (index < menu.children.length) {
+        menu.children[index].classList.add('show');
+        setTimeout(() => {
+            _menuTransition_rec(menu, index + 1);
+        }, elementsShowInterval);
+    }
+} 
 
-function closeSecondaries() {
-    fusexMenu.classList.remove('show');
+function menuReset(menu, duration) {
+    setTimeout(() => {
+        menu.classList.remove('show');
+    }, duration);
+    for (let i = 0; i < menu.children.length; i++) {
+        menu.children[i].classList.remove('show');
+    }
+}
+
+/* CLOSE */
+
+function closeSecondaries(menu) {
+    if (menu !== fusexMenu) menuReset(fusexMenu, 0);
+}
+
+for (const link of primaryMenu.getElementsByTagName("a")) {
+    link.addEventListener("click", function () {
+        closeSecondaries();
+    });
 }
 
 
@@ -31,27 +62,28 @@ menuButton.addEventListener('click', function() {
         }
     }
     menuOpen.classList.toggle('show');
-    menuContainer.classList.toggle('show');
+
+    if (menuContainer.classList.contains('show')) {
+        setTimeout(() => {
+            menuContainer.classList.remove('show');
+        }, menuOpenTransitionDuration);
+
+        menuReset(primaryMenu, elementsOpactityTransitionDuration);
+    } else {
+        menuContainer.classList.add('show');
+
+        menuTransition(primaryMenu);
+    }
 });
 
 
 /* FUSEX */
 
-fusexButton.addEventListener("click", function () {
-    primaryMenu.style.width = primaryLargeWidth;
+const fusex = document.getElementById('fusex');
 
-    fusexContent.classList.add('show');
-
-    resizeIframe();
+fusex.addEventListener('click', function() {
+    closeSecondaries(fusexMenu);
+    menuTransition(fusexMenu);
 });
-
-
-/* OTHERS */
-
-for (const link of primaryMenu.getElementsByTagName("a")) {
-    link.addEventListener("click", function (e) {
-        closeSecondaries();
-    });
-}
 
 }

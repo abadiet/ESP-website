@@ -161,6 +161,17 @@ body {
 
 /* CONTAINERS */
 
+/* common */
+
+.noflex > * {
+    flex: 0 !important;
+}
+
+.nogap {
+    gap: 0 !important;
+}
+
+
 /* content */
 
 .content-container {
@@ -228,6 +239,10 @@ body {
     align-items: start;   
 }
 
+.column-container.auto-gap {
+    gap: 0;
+    justify-content: space-between;
+}
 
 /* row */
 
@@ -249,16 +264,12 @@ body {
     justify-content: end;
 }
 
+.row-container.left-align {
+    justify-content: start;
+}
+
 .row-container > * {
     flex: 1 1 0px;
-}
-
-.row-container.noflex > * {
-    flex: 0;
-}
-
-.row-container.nogap > * {
-    gap: 0;
 }
 
 

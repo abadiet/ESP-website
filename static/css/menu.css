@@ -1,5 +1,7 @@
 :root {
     --menu-bar-height: 4.5vh;
+    --menu-open-duration: 0.4s;
+    --menu-elem-duration: 0.3s;
 }
 
 
@@ -10,11 +12,10 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: var(--menu-bar-height);
     z-index: 999;
-    background-color: #16161700;
     opacity: 0;
-    transition: background-color 0.5s ease, opacity 0.20s ease;
+    height: 0%;
+    transition: opacity 0.2s ease;
 }
 .menu-container.show {
     height: 100vh;
@@ -49,24 +50,30 @@
 .menu-button {
     position: absolute;
     z-index: 1000;
-    top: calc(var(--menu-bar-height) * 0.3);
-    right: 2vw;
-    --menu-button-height: calc(var(--menu-bar-height) * 0.25);
-    height: var(--menu-button-height);
-    width: calc(var(--menu-button-height) * 2);
+    top: 0;
+    right: 0;
+    height: var(--menu-bar-height);
+    width: calc(2vw + var(--menu-button-height) * 2 + 2vw);
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     border: none;
     background: none;
     padding: 0;
+    --menu-button-height: calc(var(--menu-bar-height) * 0.26);
+}
+.menu-button .line:first-child {
+    top: calc(var(--menu-bar-height) * 0.37);
+}
+.menu-button .line:last-child {
+    top: calc(var(--menu-bar-height) * 0.63);
 }
 
 .line {
-    width: 100%;
-    height: 1px;
+    position: absolute;
+    width: calc(var(--menu-button-height) * 2);
+    height: 2px;
+    right: 2vw;
     background-color: var(--text-color-second);
+    opacity: 80%;
 }
 
 .menu-button.close .line:first-child {
@@ -96,52 +103,92 @@
 @keyframes moveAndRotate {
     0% {
         transform: translateY(0);
+        opacity: 80%;
     }
     60% {
         transform: translateY(var(--translation));
+        opacity: 80%;
     }
     100% {
         transform: translateY(var(--translation)) rotate(var(--rotation));
+        opacity: 100%;
     }
 }
 
 @keyframes rotateAndMove {
     0% {
         transform: translateY(var(--translation)) rotate(var(--rotation));
+        opacity: 100%;
     }
     40% {
         transform: translateY(var(--translation));
+        opacity: 80%;
     }
     100% {
         transform: translateY(0);
+        opacity: 80%;
     }
 }
 
 
 /* MENU */
 
+.menu-row-container {
+    position: relative;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 150px;
+}
+
 .menu-open {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100vw;
-    height: 0vh;
-    z-index: 1;
-    transition: height 0.3s ease;
+    height: 0;
+    transition: height var(--menu-elem-duration) ease-out;
 }
 .menu-open.show {
     height: 100vh;
 }
 
 .menu {
-    position: absolute;
-    top: 50px;
-    height: 500px;
-
+    position: relative;
+    height: auto;
     display: none;
-    pointer-events: none;
-    overflow: hidden;
 }
 .menu.show {
-    display: auto;
+    display: flex;
+}
+
+.menu > * {
+    margin-top: 0;
+    opacity: 0%;
+}
+.menu.primary > * {
+    animation: menuElemTransitionBwd var(--menu-elem-duration) ease-in-out forwards;
+}
+.menu > *.show {
+    animation: menuElemTransitionFwd var(--menu-elem-duration) ease-in-out forwards;
+}
+
+@keyframes menuElemTransitionFwd {
+    0% {
+        margin-top: 0;
+        opacity: 0%;
+    }
+    100% {
+        margin-top: 20px;
+        opacity: 100%;
+    }
+}
+
+@keyframes menuElemTransitionBwd {
+    0% {
+        margin-top: 20px;
+        opacity: 100%;
+    }
+    100% {
+        margin-top: 0;
+        opacity: 0%;
+    }
 }
