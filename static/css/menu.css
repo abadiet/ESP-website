@@ -15,12 +15,16 @@
     z-index: 999;
     opacity: 0;
     height: 0%;
-    transition: opacity 0.2s ease;
+    background-color: #16161700;
+    transition: opacity 0.2s ease, background-color var(--menu-open-duration) ease-out;
 }
 .menu-container.show {
     height: 100vh;
+    background-color: #161617;
 }
-
+.menu-container.show.hidding {
+    background-color: #16161700;
+}
 
 /* BAR */
 
@@ -31,11 +35,18 @@
     width: 100vw;
     height: var(--menu-bar-height);
     z-index: -1;
-    background-color: #161617cf;
     backdrop-filter: saturate(180%) blur(10px);
+    background-color: #161617cf;
     font-weight: bold;
     gap: 10px;
 }
+
+@supports not (backdrop-filter: saturate(180%) blur(20px)) {
+    .menu-bar {
+        background-color: #161617ee;
+    }
+}
+
 .menu-bar .text {
     font-size: calc(var(--menu-bar-height) * 0.5);
 }
@@ -161,7 +172,7 @@
 }
 
 .menu > * {
-    margin-top: 0;
+    margin-top: 15px;
     opacity: 0%;
 }
 .menu.primary > * {
@@ -173,7 +184,7 @@
 
 @keyframes menuElemTransitionFwd {
     0% {
-        margin-top: 0;
+        margin-top: 15px;
         opacity: 0%;
     }
     100% {
@@ -187,8 +198,12 @@
         margin-top: 20px;
         opacity: 100%;
     }
+    90% {
+        margin-top: 20px;
+        opacity: 10%;
+    }
     100% {
-        margin-top: 0;
+        margin-top: 15px;
         opacity: 0%;
     }
 }

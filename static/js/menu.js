@@ -39,12 +39,6 @@ function closeSecondaries(menu) {
     if (menu !== fusexMenu) menuReset(fusexMenu, 0);
 }
 
-for (const link of primaryMenu.getElementsByTagName("a")) {
-    link.addEventListener("click", function () {
-        closeSecondaries();
-    });
-}
-
 
 /* MAIN */
 
@@ -64,14 +58,18 @@ menuButton.addEventListener('click', function() {
     menuOpen.classList.toggle('show');
 
     if (menuContainer.classList.contains('show')) {
+        menuContainer.classList.add('hidding');
         setTimeout(() => {
             menuContainer.classList.remove('show');
+            menuContainer.classList.remove('hidding');
         }, menuOpenTransitionDuration);
 
+        parent.document.body.style.overflowY = 'scroll';
         menuReset(primaryMenu, elementsOpactityTransitionDuration);
     } else {
         menuContainer.classList.add('show');
-
+        
+        parent.document.body.style.overflowY = 'hidden';
         menuTransition(primaryMenu);
     }
 });
