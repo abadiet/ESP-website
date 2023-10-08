@@ -182,13 +182,25 @@ step();
 window.addEventListener('resize', resize);
 window.addEventListener('scroll', scroll);
 
+/* SCROLL TO ANCHOR */
+
+const asso_hello = document.getElementById("asso-hello");
+let hasScroll = false;
+
+window.addEventListener('scroll', () => {
+    if (asso_hello !== null && asso_hello.getBoundingClientRect().top <= 0 && !hasScroll) {
+      document.getElementById('asso-scrolldown').click();
+      hasScroll = true;
+    }
+});
+
 
 /* BACKGROUND PAGE CONTENT */
 
 const background_page = document.querySelector('.background-page');
 const background_hello = document.getElementById('background-hello');
 const page_content = document.getElementById("page-content");
-const asso_hello = document.getElementById("asso-hello");
+const menu = document.getElementById("menu-container");
 
 window.addEventListener('scroll', () => {
     if (page_content.getBoundingClientRect().top < window.innerHeight) {
@@ -205,6 +217,7 @@ window.addEventListener('scroll', () => {
 
     if (page_content.getBoundingClientRect().top <= 0.5 && page_content.getBoundingClientRect().top >= 0) {
       asso_hello.style.display = "none";
+      menu.style.opacity = 1;
       window.scrollTo(0, 0);
       background_hello.style.display = "none";
       cancelAnimationFrame(requestAnimID);
