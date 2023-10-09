@@ -3,6 +3,7 @@
     --menu-open-duration: 400ms;
     --menu-elem-duration: 300ms;
     --max-len-menu-tree: 2;
+    --menu-sliding-duration: 250ms;
 }
 
 
@@ -184,18 +185,17 @@
     transform: translateX(0);
     display: flex;
 }
-.menu.show.hiding {
-    animation: moving-away 0.2s ease-in-out forwards;
+.menu.show.sliding-left {
+    animation: sliding-left var(--menu-sliding-duration) ease-in-out forwards;
+}
+.menu.show.sliding-right {
+    animation: sliding-right var(--menu-sliding-duration) ease-in-out forwards;
 }
 
-@keyframes moving-away {
+@keyframes sliding-left {
     0% {
         transform: translateX(0);
         opacity: 100%;
-    }
-    99% {
-        transform: translateX(-8px);
-        opacity: 0%;
     }
     100% {
         transform: translateX(-8px);
@@ -203,12 +203,27 @@
     }
 }
 
+@keyframes sliding-right {
+    0% {
+        transform: translateX(-8px);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 100%;
+    }
+}
+
 .menu > * {
     margin-top: 15px;
     opacity: 0%;
 }
-.menu > *.show {
+.menu > *.show:not(.noanimation) {
     animation: menuElemTransitionFwd var(--menu-elem-duration) ease-in-out forwards;
+}
+.menu > *.show.noanimation {
+    margin-top: 20px;
+    opacity: 100%;
 }
 .menu > *.show.hiding {
     animation: menuElemTransitionBwd var(--menu-elem-duration) ease-in-out forwards;

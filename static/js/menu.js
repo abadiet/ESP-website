@@ -7,6 +7,7 @@ function getPropertyValue (property) {
 const menuOpenTransitionDuration = getPropertyValue('--menu-open-duration');
 const elementsShowInterval = 20;
 const elementsOpactityTransitionDuration = getPropertyValue('--menu-elem-duration');
+const slidingDuration = getPropertyValue('--menu-sliding-duration');
 
 const menuContainer = parent.document.getElementById("menu-container");
 const menuButton = parent.document.getElementById('menu-button');
@@ -34,22 +35,22 @@ function checkEnoughWidth() {
     }
 }
 
-function menuTransition(menu) {
+function openMenu(menu) {
     menu.classList.add('show');
-    _menuTransition_rec(menu, 0);
+    _openMenu_rec(menu, 0);
     updateMenuOpenHeight(menu);
 }
 
-function _menuTransition_rec(menu, index) {
+function _openMenu_rec(menu, index) {
     if (index < menu.children.length) {
         menu.children[index].classList.add('show');
         setTimeout(() => {
-            _menuTransition_rec(menu, index + 1);
+            _openMenu_rec(menu, index + 1);
         }, elementsShowInterval);
     }
 } 
 
-function menuReset(menu, duration) {
+function closeMenu(menu, duration) {
     for (let i = 0; i < menu.children.length; i++) {
         menu.children[i].classList.add('hiding');
     }
@@ -58,8 +59,33 @@ function menuReset(menu, duration) {
         for (let i = 0; i < menu.children.length; i++) {
             menu.children[i].classList.remove('hiding');
             menu.children[i].classList.remove('show');
+            menu.children[i].classList.remove('noanimation');
         }
     }, duration);
+}
+
+function slideRight(menu) {
+    menu.classList.add('show');
+    menu.classList.add('sliding-right');
+    for (let i = 0; i < menu.children.length; i++) {
+        menu.children[i].classList.add('noanimation');
+        menu.children[i].classList.add('show');
+    }
+    setTimeout(() => {
+        menu.classList.remove('sliding-right');
+    }, slidingDuration);
+}
+
+function slideLeft(menu) {
+    menu.classList.add('sliding-left');
+    setTimeout(() => {
+        menu.classList.remove('show');
+        menu.classList.remove('sliding-left');
+        for (let i = 0; i < menu.children.length; i++) {
+            menu.children[i].classList.remove('show');
+            menu.children[i].classList.remove('noanimation');
+        }
+    }, slidingDuration);
 }
 
 function updateMenuOpenHeight(newMenu) {
@@ -74,21 +100,26 @@ function updateMenuOpenHeight(newMenu) {
 /* SECONDARIES */
 
 function closeSecondaries(menu) {
-    if (menu !== fusexMenu) menuReset(fusexMenu, 0);
-    if (menu !== naascMenu) menuReset(naascMenu, 0);
     if (!menuStayOpen) {
-        primaryMenu.classList.remove('hiding');
+        slideLeft(fusexMenu);
+        slideLeft(naascMenu);
+        setTimeout(() => {slideRight(primaryMenu);}, slidingDuration);
         backArrow.classList.remove("show");
+    } else {
+        if (menu !== fusexMenu) closeMenu(fusexMenu, 0);
+        if (menu !== naascMenu) closeMenu(naascMenu, 0);
     }
 }
 
 function openSecondaries(menu) {
-    closeSecondaries(menu);
     if (!menuStayOpen) {
-        primaryMenu.classList.add('hiding');
+        slideLeft(primaryMenu);
+        setTimeout(() => {slideRight(menu);}, slidingDuration);
         backArrow.classList.add("show");
+    } else {
+        closeSecondaries(menu);
+        openMenu(menu);
     }
-    menuTransition(menu);
 }
 
 document.getElementById('fusex').addEventListener('click', function() {
@@ -128,15 +159,15 @@ menuButton.addEventListener('click', function() {
         menuOpen.style.height = '0';
 
         // smoothly closing every menus, even those not shown
-        menuReset(primaryMenu, elementsOpactityTransitionDuration);
-        menuReset(fusexMenu, elementsOpactityTransitionDuration);
-        menuReset(naascMenu, elementsOpactityTransitionDuration);
+        closeMenu(primaryMenu, elementsOpactityTransitionDuration);
+        closeMenu(fusexMenu, elementsOpactityTransitionDuration);
+        closeMenu(naascMenu, elementsOpactityTransitionDuration);
 
     } else {
         menuContainer.classList.add('show');
         parent.document.body.style.overflowY = 'hidden';
         updateMenuOpenHeight(null);
-        menuTransition(primaryMenu);
+        openMenu(primaryMenu);
     }
 });
 
@@ -146,7 +177,6 @@ menuButton.addEventListener('click', function() {
 checkEnoughWidth();
 
 window.addEventListener('resize', () => {
-    closeSecondaries(null);
     checkEnoughWidth();
     updateMenuOpenHeight(null);
 });
