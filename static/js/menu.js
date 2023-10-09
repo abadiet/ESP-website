@@ -11,6 +11,7 @@ const slidingDuration = getPropertyValue('--menu-sliding-duration');
 
 const menuContainer = parent.document.getElementById("menu-container");
 const menuButton = parent.document.getElementById('menu-button');
+const menuBar = parent.document.getElementById('menu-bar');
 const menuOpen = document.getElementById('menu-open');
 const backArrow = document.getElementById('back-arrow');
 const primaryMenu = document.getElementById('primary-menu');
@@ -89,7 +90,8 @@ function slideLeft(menu) {
 }
 
 function updateMenuOpenHeight(newMenu) {
-    if (newMenu === null) {
+    console.log("oui")
+    if (newMenu === null || menuOpen.style.height === 'var(--menu-bar-height)') {
         menuOpen.style.height = Math.max(window.innerHeight, menuOpen.style.height) + 'px';
     } else {
         menuOpen.style.height = Math.max(Math.max(50 + 20 + newMenu.offsetHeight + 150, window.innerHeight), parseFloat(menuOpen.style.height)) + 'px';
@@ -156,7 +158,9 @@ menuButton.addEventListener('click', function() {
 
         parent.document.body.style.overflowY = 'scroll';
 
-        menuOpen.style.height = '0';
+        menuOpen.style.removeProperty('height');
+        menuOpen.classList.remove('show');
+        menuBar.classList.add('show');
 
         // smoothly closing every menus, even those not shown
         closeMenu(primaryMenu, elementsOpactityTransitionDuration);
@@ -166,6 +170,8 @@ menuButton.addEventListener('click', function() {
     } else {
         menuContainer.classList.add('show');
         parent.document.body.style.overflowY = 'hidden';
+        menuOpen.classList.add('show');
+        menuBar.classList.remove('show');
         updateMenuOpenHeight(null);
         openMenu(primaryMenu);
     }

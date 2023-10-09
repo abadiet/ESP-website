@@ -3,7 +3,7 @@
     --menu-open-duration: 400ms;
     --menu-elem-duration: 300ms;
     --max-len-menu-tree: 2;
-    --menu-sliding-duration: 250ms;
+    --menu-sliding-duration: 300ms;
 }
 
 
@@ -16,13 +16,13 @@
     width: 100vw;
     z-index: 999;
     opacity: 0;
-    height: 0%;
+    height: var(--menu-bar-height);
     background-color: #16161700;
-    transition: opacity 0.2s ease, background-color var(--menu-open-duration) ease-out;
+    transition: opacity 0.2s ease, background-color calc(var(--menu-open-duration)) ease-out;
 }
 .menu-container.show {
     height: 100vh;
-    background-color: #161617;
+    background-color: var(--background-color-second);
 }
 .menu-container.show.hiding {
     background-color: #16161700;
@@ -36,16 +36,15 @@
     left: 0;
     width: 100vw;
     height: var(--menu-bar-height);
+    opacity: 0;
+    background: #00000000;
     z-index: -1;
-    backdrop-filter: saturate(130%) blur(10px);
-    background-color: #161617cf;
     font-weight: bold;
+    transition: opacity calc(var(--menu-open-duration) / 2) ease-out, z-index var(--menu-open-duration) ease;
 }
-
-@supports not (backdrop-filter: saturate(130%) blur(10px)) {
-    .menu-bar {
-        background-color: #161617ee;
-    }
+.menu-bar.show {
+    opacity: 1;
+    z-index: auto;
 }
 
 .menu-bar > .row-container {
@@ -152,8 +151,20 @@
 .menu-open {
     position: relative;
     width: 100vw;
-    height: 0;
-    transition: height var(--menu-elem-duration) ease-out;
+    height: var(--menu-bar-height);
+    background-color: #161617cf;
+    backdrop-filter: saturate(130%) blur(10px);
+    transition: height var(--menu-elem-duration) ease-out, background-color var(--menu-elem-duration) ease-out, backdrop-filter var(--menu-elem-duration) ease-out;
+}
+.menu-open.show {
+    background-color: #161617;
+    backdrop-filter: none;
+}
+
+@supports not (backdrop-filter: saturate(130%) blur(10px)) {
+    .menu-bar {
+        background-color: #161617ee;
+    }
 }
 
 @media (max-width: 768px) {
