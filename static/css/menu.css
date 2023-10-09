@@ -1,5 +1,5 @@
 :root {
-    --menu-bar-height: 4.5vh;
+    --menu-bar-height: 44px;
     --menu-open-duration: 400ms;
     --menu-elem-duration: 300ms;
     --max-len-menu-tree: 2;
@@ -23,7 +23,7 @@
     height: 100vh;
     background-color: #161617;
 }
-.menu-container.show.hidding {
+.menu-container.show.hiding {
     background-color: #16161700;
 }
 
@@ -39,13 +39,16 @@
     backdrop-filter: saturate(130%) blur(10px);
     background-color: #161617cf;
     font-weight: bold;
-    gap: 10px;
 }
 
 @supports not (backdrop-filter: saturate(130%) blur(10px)) {
     .menu-bar {
         background-color: #161617ee;
     }
+}
+
+.menu-bar > .row-container {
+    gap: 10px;
 }
 
 .menu-bar .text {
@@ -145,27 +148,11 @@
 
 /* MENU */
 
-.menu-row-container {
-    position: relative;
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-bottom: 150px;
-
-    display: grid;
-    grid-template-columns: repeat(var(--max-len-menu-tree), auto);
-    align-items: start;
-    justify-content: start;
-    gap: var(--menu-gap);
-}
-
 .menu-open {
     position: relative;
     width: 100vw;
     height: 0;
     transition: height var(--menu-elem-duration) ease-out;
-}
-.menu-open.show {
-    height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -182,10 +169,15 @@
 }
 
 .menu {
-    position: relative;
+    position: absolute;
+    top: 50px;
+    left: 50px;
     height: auto;
     width: var(--menu-width);
     display: none;
+}
+.menu.secondary-margin {
+    margin-left: calc(var(--menu-width) + var(--menu-gap));
 }
 .menu.show {
     opacity: 100%;
@@ -200,17 +192,14 @@
     0% {
         transform: translateX(0);
         opacity: 100%;
-        width: var(--menu-width);
     }
     99% {
         transform: translateX(-8px);
         opacity: 0%;
-        width: var(--menu-width);
     }
     100% {
         transform: translateX(-8px);
         opacity: 0%;
-        width: 0px;
     }
 }
 
@@ -221,7 +210,7 @@
 .menu > *.show {
     animation: menuElemTransitionFwd var(--menu-elem-duration) ease-in-out forwards;
 }
-.menu > *.show.hidding {
+.menu > *.show.hiding {
     animation: menuElemTransitionBwd var(--menu-elem-duration) ease-in-out forwards;
 }
 
@@ -249,4 +238,21 @@
         margin-top: 15px;
         opacity: 0%;
     }
+}
+
+
+/* MISC */
+
+.menu-back-arrow {
+    display: none;
+    position: absolute;
+    top: calc(var(--menu-bar-height) * 0.31);
+    left: 2vw;
+    width: calc(var(--menu-bar-height) * 0.42);
+    height: auto;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+.menu-back-arrow.show {
+    display: block;
 }
