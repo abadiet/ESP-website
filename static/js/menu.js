@@ -1,5 +1,5 @@
 const menuOpenTransitionDuration = 400;
-const elementsShowInterval = 30;
+const elementsShowInterval = 20;
 const elementsOpactityTransitionDuration = 300;
 
 parent.window.onload = function () {    // wait for parent to be fully loaded
@@ -25,12 +25,16 @@ function _menuTransition_rec(menu, index) {
 } 
 
 function menuReset(menu, duration) {
+    for (let i = 0; i < menu.children.length; i++) {
+        menu.children[i].classList.add('hidding');
+    }
     setTimeout(() => {
         menu.classList.remove('show');
+        for (let i = 0; i < menu.children.length; i++) {
+            menu.children[i].classList.remove('hidding');
+            menu.children[i].classList.remove('show');
+        }
     }, duration);
-    for (let i = 0; i < menu.children.length; i++) {
-        menu.children[i].classList.remove('show');
-    }
 }
 
 /* CLOSE */

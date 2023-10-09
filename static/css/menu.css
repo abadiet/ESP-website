@@ -175,11 +175,11 @@
     margin-top: 15px;
     opacity: 0%;
 }
-.menu.primary > * {
-    animation: menuElemTransitionBwd var(--menu-elem-duration) ease-in-out forwards;
-}
 .menu > *.show {
     animation: menuElemTransitionFwd var(--menu-elem-duration) ease-in-out forwards;
+}
+.menu > *.show.hidding {
+    animation: menuElemTransitionBwd var(--menu-elem-duration) ease-in-out forwards;
 }
 
 @keyframes menuElemTransitionFwd {
