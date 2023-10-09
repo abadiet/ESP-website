@@ -110,6 +110,11 @@ body {
     font-size: large;
     display: block;
     text-align: justify;
+    min-width: 340px;
+}
+
+.text.few-words {
+    min-width: 0;
 }
 
 .text.title {

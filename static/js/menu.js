@@ -1,6 +1,6 @@
-const menuOpenTransitionDuration = 400;
+const menuOpenTransitionDuration = parseFloat(getComputedStyle(document.body).getPropertyValue('--menu-open-duration'));
 const elementsShowInterval = 20;
-const elementsOpactityTransitionDuration = 300;
+const elementsOpactityTransitionDuration = parseFloat(getComputedStyle(document.body).getPropertyValue('--menu-elem-duration'));
 
 parent.window.onload = function () {    // wait for parent to be fully loaded
 
@@ -47,7 +47,6 @@ function closeSecondaries(menu) {
 /* MAIN */
 
 menuButton.addEventListener('click', function() {
-    closeSecondaries();
     if (menuButton.classList.contains('open')) {
         menuButton.classList.remove('open');
         menuButton.classList.add('close');
@@ -69,7 +68,11 @@ menuButton.addEventListener('click', function() {
         }, menuOpenTransitionDuration);
 
         parent.document.body.style.overflowY = 'scroll';
+
+        // smoothly closing every menus, even those not shown
         menuReset(primaryMenu, elementsOpactityTransitionDuration);
+        menuReset(fusexMenu, elementsOpactityTransitionDuration);
+
     } else {
         menuContainer.classList.add('show');
         
