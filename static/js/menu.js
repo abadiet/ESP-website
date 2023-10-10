@@ -6,7 +6,7 @@ function getPropertyValue (property, menu) {
 }
 
 const menuOpenTransitionDuration = getPropertyValue('--menu-open-duration', null);
-const elementsShowInterval = 20;
+const elementsShowInterval = 25;
 const elementsOpactityTransitionDuration = getPropertyValue('--menu-elem-duration', null);
 const slidingDuration = getPropertyValue('--menu-sliding-duration', null);
 const menuBarHeight = getPropertyValue("--menu-bar-height", null)
