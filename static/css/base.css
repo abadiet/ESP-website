@@ -21,8 +21,15 @@ body {
     --margin-side: 5vw;
     --margin-content: 20vh;
     --margin-element-main: 5vw;
-    --margin-element-second: 2.5vw;
+    --margin-element-second: 3vw;
     --margin-cr: 2vh;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --margin-element-main: 9vh;
+        --margin-element-second: 6vh;
+    }
 }
 
 .color-inverted {
