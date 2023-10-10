@@ -1,13 +1,15 @@
 parent.window.onload = function () {    // wait for parent to be fully loaded
 
-function getPropertyValue (property) {
-    return parseFloat(getComputedStyle(document.body).getPropertyValue(property));
+function getPropertyValue (property, menu) {
+    if (menu === null) menu = document.body;
+    return parseFloat(getComputedStyle(menu).getPropertyValue(property));
 }
 
-const menuOpenTransitionDuration = getPropertyValue('--menu-open-duration');
+const menuOpenTransitionDuration = getPropertyValue('--menu-open-duration', null);
 const elementsShowInterval = 20;
-const elementsOpactityTransitionDuration = getPropertyValue('--menu-elem-duration');
-const slidingDuration = getPropertyValue('--menu-sliding-duration');
+const elementsOpactityTransitionDuration = getPropertyValue('--menu-elem-duration', null);
+const slidingDuration = getPropertyValue('--menu-sliding-duration', null);
+const menuBarHeight = getPropertyValue("--menu-bar-height", null)
 
 const menuContainer = parent.document.getElementById("menu-container");
 const menuButton = parent.document.getElementById('menu-button');
@@ -21,9 +23,9 @@ const naascMenu = document.getElementById('naasc-menu');
 let menuStayOpen = true;
 
 function checkEnoughWidth() {
-    const menuWIdth = getPropertyValue('--menu-width');
-    const menuGap = getPropertyValue('--menu-gap');
-    const maxLenTree = getPropertyValue('--max-len-menu-tree');
+    const menuWIdth = getPropertyValue('--menu-width', null);
+    const menuGap = getPropertyValue('--menu-gap', null);
+    const maxLenTree = getPropertyValue('--max-len-menu-tree', null);
 
     if (50 + (menuWIdth + menuGap) * maxLenTree - menuGap + 50 > window.innerWidth) {
         menuStayOpen = false;
@@ -39,7 +41,6 @@ function checkEnoughWidth() {
 function openMenu(menu) {
     menu.classList.add('show');
     _openMenu_rec(menu, 0);
-    updateMenuOpenHeight(menu);
 }
 
 function _openMenu_rec(menu, index) {
@@ -87,15 +88,6 @@ function slideLeft(menu) {
             menu.children[i].classList.remove('noanimation');
         }
     }, slidingDuration);
-}
-
-function updateMenuOpenHeight(newMenu) {
-    console.log("oui")
-    if (newMenu === null || menuOpen.style.height === 'var(--menu-bar-height)') {
-        menuOpen.style.height = Math.max(window.innerHeight, menuOpen.style.height) + 'px';
-    } else {
-        menuOpen.style.height = Math.max(Math.max(50 + 20 + newMenu.offsetHeight + 150, window.innerHeight), parseFloat(menuOpen.style.height)) + 'px';
-    }
 }
 
 
@@ -158,7 +150,7 @@ menuButton.addEventListener('click', function() {
 
         parent.document.body.style.overflowY = 'scroll';
 
-        menuOpen.style.removeProperty('height');
+        menuOpen.style.setProperty('--menu-open-scaleY', '1');
         menuOpen.classList.remove('show');
         menuBar.classList.add('show');
 
@@ -171,8 +163,8 @@ menuButton.addEventListener('click', function() {
         menuContainer.classList.add('show');
         parent.document.body.style.overflowY = 'hidden';
         menuOpen.classList.add('show');
+        menuOpen.style.setProperty('--menu-open-scaleY', window.innerHeight / menuBarHeight);
         menuBar.classList.remove('show');
-        updateMenuOpenHeight(null);
         openMenu(primaryMenu);
     }
 });
@@ -182,9 +174,10 @@ menuButton.addEventListener('click', function() {
 
 checkEnoughWidth();
 
-window.addEventListener('resize', () => {
+parent.window.addEventListener('resize', () => {
     checkEnoughWidth();
-    updateMenuOpenHeight(null);
+    closeSecondaries(null);
+    menuOpen.style.setProperty('--menu-open-scaleY', window.innerHeight / menuBarHeight);
 });
 
 

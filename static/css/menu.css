@@ -1,5 +1,6 @@
 :root {
     --menu-bar-height: 44px;
+    --menu-button-height: calc(var(--menu-bar-height) * 0.26);
     --menu-open-duration: 400ms;
     --menu-elem-duration: 300ms;
     --max-len-menu-tree: 2;
@@ -33,18 +34,17 @@
 .menu-bar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: calc(calc(2vw + var(--menu-button-height) * 2 + 2vw));
+    width: calc(100vw - 2 * calc(2vw + var(--menu-button-height) * 2 + 2vw));
     height: var(--menu-bar-height);
     opacity: 0;
     background: #00000000;
-    z-index: -1;
+    z-index: auto;
     font-weight: bold;
-    transition: opacity calc(var(--menu-open-duration) / 2) ease-out, z-index var(--menu-open-duration) ease;
+    transition: opacity calc(var(--menu-open-duration) / 1.7) ease-out;
 }
 .menu-bar.show {
     opacity: 1;
-    z-index: auto;
 }
 
 .menu-bar > .row-container {
@@ -73,7 +73,6 @@
     border: none;
     background: none;
     padding: 0;
-    --menu-button-height: calc(var(--menu-bar-height) * 0.26);
 }
 .menu-button .line:first-child {
     top: calc(var(--menu-bar-height) * 0.37);
@@ -154,16 +153,15 @@
     height: var(--menu-bar-height);
     background-color: #161617cf;
     backdrop-filter: saturate(130%) blur(10px);
-    transition: height var(--menu-elem-duration) ease-out, background-color var(--menu-elem-duration) ease-out, backdrop-filter var(--menu-elem-duration) ease-out;
-}
-.menu-open.show {
-    background-color: #161617;
-    backdrop-filter: none;
+    transform-origin: top;
+    --menu-open-scaleY: 1;
+    transform: scaleY(var(--menu-open-scaleY));
+    transition: transform var(--menu-elem-duration) ease-in-out;
 }
 
 @supports not (backdrop-filter: saturate(130%) blur(10px)) {
-    .menu-bar {
-        background-color: #161617ee;
+    .menu-open {
+        background-color: #161617f8;
     }
 }
 
@@ -185,6 +183,7 @@
     top: 50px;
     left: 50px;
     height: auto;
+    padding-bottom: 150px;
     width: var(--menu-width);
     display: none;
 }
@@ -226,14 +225,16 @@
 }
 
 .menu > * {
-    margin-top: 15px;
+    margin-top: 20px;
+    --elem-animation-translation: -8px;
+    transform: translateY(var(--elem-animation-translation));
     opacity: 0%;
 }
 .menu > *.show:not(.noanimation) {
     animation: menuElemTransitionFwd var(--menu-elem-duration) ease-in-out forwards;
 }
 .menu > *.show.noanimation {
-    margin-top: 20px;
+    transform: translateY(0px);
     opacity: 100%;
 }
 .menu > *.show.hiding {
@@ -242,26 +243,26 @@
 
 @keyframes menuElemTransitionFwd {
     0% {
-        margin-top: 15px;
+        transform: translateY(var(--elem-animation-translation));
         opacity: 0%;
     }
     100% {
-        margin-top: 20px;
+        transform: translateY(0px);
         opacity: 100%;
     }
 }
 
 @keyframes menuElemTransitionBwd {
     0% {
-        margin-top: 20px;
+        transform: translateY(0px);
         opacity: 100%;
     }
     90% {
-        margin-top: 20px;
+        transform: translateY(0px);
         opacity: 10%;
     }
     100% {
-        margin-top: 15px;
+        transform: translateY(var(--elem-animation-translation));
         opacity: 0%;
     }
 }
@@ -278,6 +279,7 @@
     height: auto;
     transform: rotate(180deg);
     cursor: pointer;
+    z-index: 1;
 }
 .menu-back-arrow.show {
     display: block;
