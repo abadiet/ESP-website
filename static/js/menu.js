@@ -129,11 +129,11 @@ function slideLeft(menu) {
 
 function closeSecondaries(menu) {
     if (!menuStayOpen) {
+        slideLeft(backArrow);
         slideLeft(fusexMenu);
         slideLeft(minifMenu);
         slideLeft(naascMenu);
         setTimeout(() => {slideRight(primaryMenu);}, slidingDuration);
-        backArrow.classList.remove("show");
     } else {
         if (menu !== fusexMenu) closeMenu(fusexMenu, 0);
         if (menu !== minifMenu) closeMenu(minifMenu, 0);
@@ -144,8 +144,8 @@ function closeSecondaries(menu) {
 function openSecondaries(menu) {
     if (!menuStayOpen) {
         slideLeft(primaryMenu);
+        slideRight(backArrow);
         setTimeout(() => {slideRight(menu);}, slidingDuration);
-        backArrow.classList.add("show");
     } else {
         closeSecondaries(menu);
         openMenu(menu);
@@ -180,11 +180,13 @@ menuButton.addEventListener('click', function() {
 
     if (menuContainer.classList.contains('show')) {
         menuContainer.classList.add('hiding');
+        backArrow.classList.add("hiding");
         setTimeout(() => {
             menuContainer.classList.remove('show');
             menuContainer.classList.remove('hiding');
             primaryMenu.classList.remove('hiding');
             backArrow.classList.remove("show");
+            backArrow.classList.remove("hiding");
         }, menuOpenTransitionDuration);
 
         parent.document.body.style.overflowY = 'scroll';

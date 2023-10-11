@@ -265,10 +265,18 @@
     left: 2vw;
     width: calc(var(--menu-bar-height) * 0.42);
     height: auto;
-    transform: rotate(180deg);
     cursor: pointer;
     z-index: 1;
 }
 .menu-back-arrow.show {
     display: block;
+}
+.menu-back-arrow.show.sliding-left {
+    animation: sliding-left var(--menu-sliding-duration) ease-in-out forwards;
+}
+.menu-back-arrow.show.sliding-right {
+    animation: sliding-right var(--menu-sliding-duration) ease-in-out forwards;
+}
+.menu-back-arrow.show.hiding {
+    animation: menuElemTransitionBwd var(--menu-elem-duration) ease-in-out forwards;
 }
