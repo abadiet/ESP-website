@@ -67,7 +67,7 @@ body {
     font-size: 8vw;
 }
 
-@media (min-height: calc(2 * (10vh + 8vw + 50px + 35vh / 2))) {
+@media (min-height: calc(2 * (10vh + 8vw + 10vh + 35vh / 2))) {
     .asso-name {
         padding-top: 10vh;
     }
@@ -228,10 +228,10 @@ body {
 }
 
 .row-wrap-container.picture-text > .picture {
-    min-width: min(min(90%, 500px), calc(100vw - 2 * var(--margin-side)));
+    min-width: min(500px, calc(100vw - 2 * var(--margin-side)));
 }
 .row-wrap-container.picture-text > .text-container {
-    min-width: min(min(90%, 300px), calc(100vw - 2 * var(--margin-side)));
+    min-width: min(300px, calc(100vw - 2 * var(--margin-side)));
 }
 .row-wrap-container.pictures-captions .picture {
     height: 30vh;
