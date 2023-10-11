@@ -7,3 +7,4 @@ Repo dedicated to the [ESP website](https://esp.ensma.fr/).
 - [ ] backdrop filter menu bar browser non support
 - [ ] menu over scrollingY
 - [ ] diff screen-size handling
+- [ ] first menu opening bug

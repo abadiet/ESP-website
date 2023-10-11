@@ -54,10 +54,6 @@ body {
 
 /* ASSO HELLO */
 
-:root {
-    --asso-hello-logo-height: 35vh;
-}
-
 .asso-hello {
     position: relative;
     width: 100%;
@@ -71,7 +67,7 @@ body {
     font-size: 8vw;
 }
 
-@media (min-height: calc(2 * (10vh + 8vw + 50px + var(--asso-hello-logo-height) / 2))) {
+@media (min-height: calc(2 * (10vh + 8vw + 50px + 35vh / 2))) {
     .asso-name {
         padding-top: 10vh;
     }
@@ -86,7 +82,7 @@ body {
 }
 
 .asso-logo {
-    height: var(--asso-hello-logo-height);
+    height: 35vh;
     width: auto;
     max-width: 100%;
     display: block;
