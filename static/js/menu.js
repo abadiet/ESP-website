@@ -16,7 +16,10 @@ const menuButton = parent.document.getElementById('menu-button');
 const menuBar = parent.document.getElementById('menu-bar');
 const menuOpen = document.getElementById('menu-open');
 const backArrow = document.getElementById('back-arrow');
+
 const primaryMenu = document.getElementById('primary-menu');
+
+const submenus = document.getElementById("submenus");
 const fusexMenu = document.getElementById('fusex-menu');
 const minifMenu = document.getElementById('minif-menu');
 const naascMenu = document.getElementById('naasc-menu');
@@ -24,20 +27,48 @@ const naascMenu = document.getElementById('naasc-menu');
 let menuStayOpen = true;
 
 function checkEnoughWidth() {
-    const menuWIdth = getPropertyValue('--menu-width', null);
-    const menuGap = getPropertyValue('--menu-gap', null);
-    const maxLenTree = getPropertyValue('--max-len-menu-tree', null);
+    menuStayOpen = true;
 
-    if (50 + (menuWIdth + menuGap) * maxLenTree - menuGap + 50 > window.innerWidth) {
-        menuStayOpen = false;
-        fusexMenu.classList.remove('secondary-margin');
-        minifMenu.classList.remove('secondary-margin');
-        naascMenu.classList.remove('secondary-margin');
-    } else {
-        menuStayOpen = true;
-        fusexMenu.classList.add('secondary-margin');
-        minifMenu.classList.add('secondary-margin');
-        naascMenu.classList.add('secondary-margin');
+    // hide the primary menu
+    primaryMenu.style.opacity = 0;
+    primaryMenu.classList.add("show");
+
+    // display each element
+    for (let elem = 0; elem < primaryMenu.children.length; elem++) {
+        primaryMenu.children[elem].classList.add('show');
+    }
+
+    let i = 0;
+    while (menuStayOpen && i < submenus.children.length) {
+        // hide everything
+        submenus.children[i].style.opacity = 0;
+        submenus.children[i].classList.add("show");
+
+        // display each element
+        for (let elem = 0; elem < submenus.children[i].children.length; elem++) {
+            submenus.children[i].children[elem].classList.add('show');
+        }
+
+        // check if their is enough place for this menu
+        if (submenus.children[i].offsetLeft + submenus.children[i].offsetWidth + 2 * 50 > window.innerWidth) {
+            menuStayOpen = false;
+        }
+
+        // reset the menu
+        submenus.children[i].classList.remove("show");
+        submenus.children[i].style.opacity = 1;
+        for (let elem = 0; elem < submenus.children[i].children.length; elem++) {
+            submenus.children[i].children[elem].classList.remove('show');
+        }
+
+        i++;
+    }
+
+    // reset the primary menu
+    primaryMenu.classList.remove("show");
+    primaryMenu.style.opacity = 1;
+    for (let elem = 0; elem < primaryMenu.children.length; elem++) {
+        primaryMenu.children[elem].classList.remove('show');
     }
 }
 
