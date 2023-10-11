@@ -63,6 +63,12 @@ body {
     font-size: 8vw;
 }
 
+@media (max-width: 768px) {
+    .asso-name {
+        padding-top: 10vh;
+    }
+}
+
 .asso-logo-container {
     position: absolute;
     top: 0;
@@ -122,13 +128,17 @@ body {
     min-width: 340px;
 }
 
-.text.few-words {
+.text.preserve {
+    white-space: pre;
     min-width: 0;
 }
 
 .text.title {
     font-size: xx-large;
     font-weight: bold;
+}
+.title + .text {
+    margin-top: calc(var(--margin-cr) / 1.5);
 }
 
 .text.title.subtitle {
@@ -179,6 +189,10 @@ body {
 
 .noflex > * {
     flex: 0 !important;
+}
+
+.noshrink > * {
+    flex: 1 0 0px !important;
 }
 
 .nogap {

@@ -18,6 +18,7 @@ const menuOpen = document.getElementById('menu-open');
 const backArrow = document.getElementById('back-arrow');
 const primaryMenu = document.getElementById('primary-menu');
 const fusexMenu = document.getElementById('fusex-menu');
+const minifMenu = document.getElementById('minif-menu');
 const naascMenu = document.getElementById('naasc-menu');
 
 let menuStayOpen = true;
@@ -30,10 +31,12 @@ function checkEnoughWidth() {
     if (50 + (menuWIdth + menuGap) * maxLenTree - menuGap + 50 > window.innerWidth) {
         menuStayOpen = false;
         fusexMenu.classList.remove('secondary-margin');
+        minifMenu.classList.remove('secondary-margin');
         naascMenu.classList.remove('secondary-margin');
     } else {
         menuStayOpen = true;
         fusexMenu.classList.add('secondary-margin');
+        minifMenu.classList.add('secondary-margin');
         naascMenu.classList.add('secondary-margin');
     }
 }
@@ -96,11 +99,13 @@ function slideLeft(menu) {
 function closeSecondaries(menu) {
     if (!menuStayOpen) {
         slideLeft(fusexMenu);
+        slideLeft(minifMenu);
         slideLeft(naascMenu);
         setTimeout(() => {slideRight(primaryMenu);}, slidingDuration);
         backArrow.classList.remove("show");
     } else {
         if (menu !== fusexMenu) closeMenu(fusexMenu, 0);
+        if (menu !== minifMenu) closeMenu(minifMenu, 0);
         if (menu !== naascMenu) closeMenu(naascMenu, 0);
     }
 }
@@ -118,6 +123,9 @@ function openSecondaries(menu) {
 
 document.getElementById('fusex').addEventListener('click', function() {
     openSecondaries(fusexMenu);
+});
+document.getElementById('minif').addEventListener('click', function() {
+    openSecondaries(minifMenu);
 });
 document.getElementById('naasc').addEventListener('click', function() {
     openSecondaries(naascMenu);
@@ -157,6 +165,7 @@ menuButton.addEventListener('click', function() {
         // smoothly closing every menus, even those not shown
         closeMenu(primaryMenu, elementsOpactityTransitionDuration);
         closeMenu(fusexMenu, elementsOpactityTransitionDuration);
+        closeMenu(minifMenu, elementsOpactityTransitionDuration);
         closeMenu(naascMenu, elementsOpactityTransitionDuration);
 
     } else {
