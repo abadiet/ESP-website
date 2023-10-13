@@ -1,3 +1,7 @@
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 /* BACKGROUND ASSO HELLO */
 
 const STAR_COLOR = '#fff';
@@ -16,8 +20,6 @@ let scale = 1, // device pixel ratio
 let stars = [];
 
 let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: Math.pow((1.7 / (window.innerWidth + window.innerHeight)), 1.02) };
-
-let requestAnimID;
 
 function generate() {
   for( let i = 0; i < STAR_COUNT; i++ ) {
@@ -110,7 +112,7 @@ function step() {
  update();
  render();
 
- requestAnimID = requestAnimationFrame( step );
+ requestAnimationFrame( step );
 
 }
 
@@ -216,12 +218,11 @@ window.addEventListener('scroll', () => {
     }
 
     if (page_content.getBoundingClientRect().top <= 0.5 && page_content.getBoundingClientRect().top >= 0) {
-      asso_hello.style.display = "none";
-      menu.style.opacity = 1;
-      window.scrollTo(0, 0);
-      background_hello.style.display = "none";
-      cancelAnimationFrame(requestAnimID);
-      stars = [];
+      setTimeout(() => {
+        asso_hello.remove();
+        background_hello.remove();
+        menu.style.opacity = 1;
+      }, 1000);
     }
 
 });
