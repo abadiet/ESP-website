@@ -148,7 +148,9 @@ function openSecondaries(menu) {
         setTimeout(() => {slideRight(menu);}, slidingDuration);
     } else {
         closeSecondaries(menu);
-        openMenu(menu);
+        setTimeout(() => {
+            openMenu(menu);
+        }, 5);  // to be sure all the menus are closed
     }
 }
 
