@@ -7,22 +7,81 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
     background-color: #000;
     background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent), radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent);
 }
 
 .background-page {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
+    --screen-ratio-start: 10;
+    top: calc((50 - var(--screen-ratio-start) / 2) * 1vh);
+    left: calc((50 - var(--screen-ratio-start) / 2) * 1vw);
+    height: calc(var(--screen-ratio-start) * 1vh);
+    width: calc(var(--screen-ratio-start) * 1vw);
     z-index: -1;
-    background-color: var(--background-color-second);
+    background-color: var(--background-color-main);
+    opacity: 0;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease-out, height 0.3s ease-out, background-color 0.5s ease, border-radius 0.5s ease;
+}
+.background-page.show {
+    animation: bkgPageShow 0.25s ease-out forwards;
+}
+
+@keyframes bkgPageShow {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+        border-radius: 50%;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(calc(100 / var(--screen-ratio-start)));
+        border-radius: 0%;
+    }
+}
+
+.background-page-sublayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color-main);
+    opacity: 0;
+    z-index: -2;
+    transition: opacity 0.25s ease-out;
+}
+.background-page-sublayer.show {
+    opacity: 0.2;
+}
+
+.bkg-star {
+    position: fixed;
+    top: var(--initY);
+    left: var(--initX);
+    height: calc(var(--size) / var(--distance) * 1px);    /* proportionality to scale the size */
+    width: calc(var(--size) / var(--distance) * 1px);
+    clip-path: ellipse(closest-side farthest-side);
+    rotate: calc(var(--angle) * 1rad);
+    background-color: #ffffff;
+    animation-name: moveOut;
+    animation-duration: calc(var(--time-to-leave) * 1s);
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.770, 0.240, 0.905, 0.385);
+}
+
+@keyframes moveOut {
+    0% {
+        transform: translateX(0) scale(1);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(var(--translate) * 1px)) scale(calc(var(--our-speed) * var(--time-to-leave)));
+    }
 }

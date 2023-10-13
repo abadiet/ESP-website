@@ -55,9 +55,24 @@ body {
 /* ASSO HELLO */
 
 .asso-hello {
-    position: relative;
-    width: 100%;
-    height: 400vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+}
+.asso-hello.slide {
+    animation: helloSlideUp 0.5s ease-in forwards;
+}
+
+@keyframes helloSlideUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
 }
 
 .asso-name {
@@ -119,6 +134,25 @@ body {
 
 
 /* PAGE CONTENT */
+
+.page-content {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translateY(100vh);
+}
+.page-content.show {
+    animation: pageContentScroll 0.5s ease-out 0.4s forwards;
+}
+
+@keyframes pageContentScroll {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
 .page-content * {
     max-width: calc(100vw - 2 * var(--margin-side));
