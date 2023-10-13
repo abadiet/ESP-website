@@ -105,8 +105,8 @@ body {
 
 .asso-scrolldown {
     position: absolute;
-    top: calc(var(--viewport-height) * 0.86);
-    height: calc(var(--viewport-height) * 0.14);
+    top: calc(var(--viewport-height) * 0.90);
+    height: calc(var(--viewport-height) * 0.10);
     width: 100%;
 }
 .asso-scrolldown > * {
@@ -114,8 +114,22 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: calc(var(--viewport-height) * 0.09);
+    height: calc(var(--viewport-height) * 0.04);
     width: auto;
+    animation: assoScrollDown 2.3s ease-in-out infinite;
+    rotate: -90deg;
+}
+
+@keyframes assoScrollDown {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(calc(var(--viewport-height) * 0.015));
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 

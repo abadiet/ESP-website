@@ -106,6 +106,7 @@ function goToContent() {
   document.body.removeEventListener("mousewheel", goToContent, false);
   document.body.removeEventListener("DOMMouseScroll", goToContent, false);
   document.body.removeEventListener("touchmove", goToContent, false);
+  document.body.removeEventListener("click", goToContent, false);
 
   background_page.classList.add("show");
   background_page_sub.classList.add("show");
@@ -123,3 +124,4 @@ function goToContent() {
 document.body.addEventListener("mousewheel", goToContent, false);
 document.body.addEventListener("DOMMouseScroll", goToContent, false);
 document.body.addEventListener("touchmove", goToContent, false);
+document.body.addEventListener("click", goToContent, false);
