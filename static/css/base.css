@@ -60,7 +60,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -2;
+    z-index: -998;
 }
 .asso-hello.slide {
     animation: helloSlideUp 0.5s ease-in forwards;
@@ -182,6 +182,7 @@ body {
     display: block;
     text-align: justify;
     min-width: min(340px, calc(100vw - 2 * var(--margin-side)));
+    text-decoration: none;
 }
 
 .text.preserve {
@@ -253,6 +254,7 @@ body {
     --background-color: var(--background-color-main);
     color: var(--text-color);
     background-color: var(--background-color);
+    z-index: -996;
 }
 
 
@@ -340,6 +342,39 @@ body {
     flex: 1 1 0px;
 }
 
+/* row slidewshow */
+
+.row-slidewshow-container {
+    --slideshow-height: 40vh;
+    height: var(--slideshow-height);
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.row-slidewshow-container > * {
+    position: absolute;
+    height: var(--slideshow-height);
+    width: auto;
+    transform: translateY(0) scale(1);
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+.row-slidewshow-container .picture {
+    height: 100%;
+    width: calc(var(--slideshow-height) * 1.6);
+}
+
+/* text on picture */
+
+.text-on-picture-container > .text {
+    position: absolute;
+    inset: 5% 0 0 5%;
+}
+
 
 /* LINKS */
 
@@ -347,7 +382,6 @@ body {
     width: auto;
     display: initial;
     position: relative;
-    text-decoration: none;
     color: var(--text-color);
     min-width: 0;
     border: none;
