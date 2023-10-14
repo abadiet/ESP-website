@@ -16,7 +16,7 @@
 
 .background-page {
     position: fixed;
-    --screen-ratio-start: 10;
+    --screen-ratio-start: 1;
     top: calc((50 - var(--screen-ratio-start) / 2) * 1vh);
     left: calc((50 - var(--screen-ratio-start) / 2) * 1vw);
     height: calc(var(--screen-ratio-start) * 1vh);
@@ -24,7 +24,6 @@
     z-index: -1;
     background-color: var(--background-color-main);
     opacity: 0;
-    border-radius: 50%;
 }
 .background-page.show {
     animation: bkgPageShow 0.25s ease-out forwards;
@@ -34,12 +33,12 @@
     0% {
         opacity: 0;
         transform: scale(1);
-        border-radius: 50%;
+        clip-path: inset(0 0 0 0 round 2px);
     }
     100% {
         opacity: 1;
         transform: scale(calc(100 / var(--screen-ratio-start)));
-        border-radius: 0%;
+        clip-path: inset(0 0 0 0);
     }
 }
 
@@ -55,7 +54,7 @@
     transition: opacity 0.25s ease-out;
 }
 .background-page-sublayer.show {
-    opacity: 0.2;
+    opacity: 0.8;
 }
 
 .bkg-star {

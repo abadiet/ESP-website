@@ -18,7 +18,7 @@
     opacity: 0;
     height: var(--menu-bar-height);
     background-color: #16161700;
-    transition: opacity 0.2s ease, background-color calc(var(--menu-open-duration)) ease-out;
+    transition: opacity 0.25s ease-out, background-color calc(var(--menu-open-duration)) ease-out;
 }
 .menu-container.show {
     height: 100vh;
