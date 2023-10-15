@@ -4,9 +4,44 @@ const scale_adjust = 3;
 
 document.querySelectorAll('.row-slidewshow-container').forEach(slideshow => {
 
-    let cards_order = [];
+    let cards_order;
 
     let cur_timeout;
+    let cardWidth;
+    let offsetOrder;
+
+    function init() {
+        cardWidth = slideshow.children[0].offsetWidth;
+
+        // add some cards if needed
+        let min_cards = 3;
+        let cur_slideshowHalfWidth = cardWidth / 2 + cardWidth;
+        while (cur_slideshowHalfWidth < window.innerWidth / 2) {
+            min_cards += 2;
+
+            const order = Math.ceil((Math.abs(min_cards) - 1) / 2);
+            let translateX = 0;
+            for (let j = 1; j <= order; j++) {
+                translateX += 1 / j;
+            }
+            translateX *= cardWidth;
+
+            cur_slideshowHalfWidth = translateX;
+        }
+        const prev_len = slideshow.children.length;
+        for (let i = 0; i < min_cards - prev_len; i++) {
+            let ichild = i;
+            while (ichild >= prev_len) ichild -= prev_len;
+            slideshow.appendChild(slideshow.children[ichild].cloneNode(true));
+        }
+
+        // init the cards order
+        cards_order = [];
+        offsetOrder = Math.ceil((slideshow.children.length - 1) / 2);
+        for (let i = 0; i < slideshow.children.length; i++) {
+            cards_order.push(i - offsetOrder);
+        }
+    }
 
     function scroll(left) {
 
@@ -15,20 +50,34 @@ document.querySelectorAll('.row-slidewshow-container').forEach(slideshow => {
             if (left) direction = -1;
 
             cards_order[i] += direction;
-            if (cards_order[i] < - Math.ceil(slideshow.children.length / 2)) {
-                slideshow.children[i].style.opacity = 0;
-                cards_order[i] = slideshow.children.length - 1 - Math.ceil(slideshow.children.length / 2);
+            if (cards_order[i] < - offsetOrder) {
+                slideshow.children[i].classList.add('teleport');
+                setTimeout(() => {
+                    slideshow.children[i].classList.remove('teleport');
+                }, 150);
+                cards_order[i] = slideshow.children.length - 1 - offsetOrder;
             } else {
-                if (cards_order[i] > slideshow.children.length - 1 - Math.ceil(slideshow.children.length / 2)) {
-                    slideshow.children[i].style.opacity = 0;
-                    cards_order[i] = - Math.ceil(slideshow.children.length / 2);
-                } else {
-                    slideshow.children[i].style.opacity = 1;
+                if (cards_order[i] > slideshow.children.length - 1 - offsetOrder) {
+                    slideshow.children[i].classList.add('teleport');
+                    setTimeout(() => {
+                        slideshow.children[i].classList.remove('teleport');
+                    }, 150);
+                    cards_order[i] = - offsetOrder;
                 }
             }
 
-            const transOff = cards_order[i] * (2 * slideshow.children[(i - direction + slideshow.children.length) % slideshow.children.length].offsetWidth / (Math.abs(cards_order[i]) + 1));
-            slideshow.children[i].style.transform = "translateX(" + transOff + "px) scale(" + scale_adjust / (Math.abs(cards_order[i]) + scale_adjust) + ")";
+            let translateX;
+            if (Math.abs(cards_order[i]) <= 1) {
+                translateX = cards_order[i] * cardWidth;
+            } else {
+                translateX = 0;
+                for (let j = 1; j <= Math.abs(cards_order[i]); j++) {
+                    translateX += 1 / j;
+                }
+                translateX *= cardWidth * cards_order[i] / Math.abs(cards_order[i]);
+            }
+
+            slideshow.children[i].style.transform = "translateX(" + translateX + "px) scale(" + scale_adjust / (Math.abs(cards_order[i]) + scale_adjust) + ")";
             slideshow.children[i].style.zIndex = -1 * Math.abs(cards_order[i]) + zIndex_offset;
             slideshow.children[i].style.filter = "blur(" + Math.abs(cards_order[i]) * 4 + "px)";
         }
@@ -68,20 +117,7 @@ document.querySelectorAll('.row-slidewshow-container').forEach(slideshow => {
         }
     }
 
-    // add some cards if needed
-    const min_cards = 10;//TODO 2 * Math.ceil(window.innerWidth / slide_distance) + 1 + 1; // last +1 to avoid screen from opposite side of the right card 
-    const prev_len = slideshow.children.length;
-    for (let i = 0; i < min_cards - prev_len; i++) {
-        let ichild = Math.ceil(prev_len / 2) - 1 + i;
-        while (ichild >= prev_len) ichild -= prev_len;
-        slideshow.appendChild(slideshow.children[ichild].cloneNode(true));
-    }
-
-    // init the cards order
-    for (let i = 0; i < slideshow.children.length; i++) {
-        cards_order.push(i - Math.ceil(slideshow.children.length / 2));
-    }
-
+    init();
     scroll(true);
 
     let passiveSupported = false;
@@ -102,7 +138,9 @@ document.querySelectorAll('.row-slidewshow-container').forEach(slideshow => {
     slideshow.addEventListener("wheel", onScroll, options);
     slideshow.addEventListener("touchstart", (event) => {
         touchMoveStartX = event.touches[0].pageX;
-    }, options)
+    }, options);
     slideshow.addEventListener("touchmove", onScroll, options);
+
+    window.addEventListener('resize', init);
 
 });
