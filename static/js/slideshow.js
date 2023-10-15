@@ -40,20 +40,32 @@ document.querySelectorAll('.row-slidewshow-container').forEach(slideshow => {
 
     let touchMoveStartX = 0;
     function onScroll(event) {
-        slideshow.removeEventListener("wheel", onScroll);
-        slideshow.removeEventListener("touchmove", onScroll, { passive: false });
+        slideshow.removeEventListener("wheel", onScroll, options);
+        slideshow.removeEventListener("touchmove", onScroll, options);
 
-        const delta = event.deltaX || (touchMoveStartX - event.touches[0].pageX);
+        let delta = 0;
+        try {
+            delta = event.deltaX || (touchMoveStartX - event.touches[0].pageX);
+        } catch(err) {
 
-        event.preventDefault();
+        }
 
-        clearTimeout(cur_timeout);
-        scroll((delta > 0));
+        if (delta !== 0) {
 
-        setTimeout(() => {
-            slideshow.addEventListener("wheel", onScroll);
-            slideshow.addEventListener("touchmove", onScroll, { passive: false });
-        }, 200);
+            event.preventDefault();
+
+            clearTimeout(cur_timeout);
+            scroll((delta > 0));
+
+            setTimeout(() => {
+                slideshow.addEventListener("wheel", onScroll, options);
+                slideshow.addEventListener("touchmove", onScroll, options);
+            }, 200);
+
+        } else {
+            slideshow.addEventListener("wheel", onScroll, options);
+            slideshow.addEventListener("touchmove", onScroll, options);
+        }
     }
 
     // add some cards if needed
@@ -72,10 +84,25 @@ document.querySelectorAll('.row-slidewshow-container').forEach(slideshow => {
 
     scroll(true);
 
-    slideshow.addEventListener("wheel", onScroll);
+    let passiveSupported = false;
+    try {
+        const options = {
+            get passive() {
+            passiveSupported = true;
+            return false;
+            },
+        };
+        window.addEventListener("test", null, options);
+        window.removeEventListener("test", null, options);
+    } catch (err) {
+        passiveSupported = false;
+    }
+    const options = passiveSupported ? { passive: false } : true;
+
+    slideshow.addEventListener("wheel", onScroll, options);
     slideshow.addEventListener("touchstart", (event) => {
         touchMoveStartX = event.touches[0].pageX;
-    }, { passive: true })
-    slideshow.addEventListener("touchmove", onScroll, { passive: false });
+    }, options)
+    slideshow.addEventListener("touchmove", onScroll, options);
 
 });

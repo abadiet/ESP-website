@@ -99,25 +99,41 @@ const page_content = document.getElementById("page-content");
 const menu = document.getElementById("menu-container");
 
 function goToContent() {
-  document.body.removeEventListener("mousewheel", goToContent, false);
-  document.body.removeEventListener("DOMMouseScroll", goToContent, false);
-  document.body.removeEventListener("touchmove", goToContent, false);
-  document.body.removeEventListener("click", goToContent, false);
+  document.body.addEventListener("wheel", goToContent, options);
+  document.body.addEventListener("touchmove", goToContent, options);
+  document.body.addEventListener("click", goToContent, options);
 
   background_page.classList.add("show");
   background_page_sub.classList.add("show");
   page_content.classList.add("show");
 
+  document.body.style.overflowY = 'scroll';
+
   setTimeout(() => {
     asso_hello.remove();
     background_hello.remove();
     menu.style.opacity = 1;
-    document.body.style.overflowY = 'scroll';
   }, 500);
 
 }
 
-document.body.addEventListener("mousewheel", goToContent, false);
-document.body.addEventListener("DOMMouseScroll", goToContent, false);
-document.body.addEventListener("touchmove", goToContent, false);
-document.body.addEventListener("click", goToContent, false);
+let passiveSupported = false;
+try {
+  const options = {
+    get passive() {
+      passiveSupported = true;
+      return false;
+    },
+  };
+
+  window.addEventListener("test", null, options);
+  window.removeEventListener("test", null, options);
+} catch (err) {
+  passiveSupported = false;
+}
+const options = passiveSupported ? { passive: true } : false;
+
+
+document.body.addEventListener("wheel", goToContent, options);
+document.body.addEventListener("touchmove", goToContent, options);
+document.body.addEventListener("click", goToContent, options);
