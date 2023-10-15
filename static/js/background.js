@@ -1,7 +1,3 @@
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
-
 /* BACKGROUND ASSO HELLO */
 
 const STAR_SIZE = 10;  // px
