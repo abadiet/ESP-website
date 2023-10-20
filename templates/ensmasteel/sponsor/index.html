@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENSMASTEEL</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/background.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/bottom.css">
+  <script src="/static/js/viewport.js"></script>
+</head>
+<body>
+
+  <div id="menu-container" class="menu-container" style="opacity: 1;">
+    <div id="menu-bar" class="menu-bar color-inverted row-container noflex show">
+        <div class="row-container noflex left-align">
+            <img src="/static/pictures/ensmasteel-logo.png" class="menu-bar-logo">
+            <span class="text preserve">ENSMASTEEL</span>
+        </div>
+    </div>
+    <button id="menu-button" class="menu-button">
+        <div class="line"></div>
+        <div class="line"></div>
+    </button>
+    <iframe src="/menu.html" style="border: none; width: 100%; height: 100%;"></iframe>
+  </div>
+
+  <div id="page-content" class="page-content show" style="--animation-duration: 0s; --animation-delay: 0s;">
+
+    <div class="content-container">
+        <div class="row-wrap-container picture-text">
+            <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
+            <div class="column-container left-align gap-cr">
+                <span class="text title">Qu es-ce que devenir partenaire de l'ENSMASTEEL ?</span>
+                <span class="text">Le développement de robots pour la Coupe de France de Robotique est un processus couteux en temps et en argent. C'est pourquoi nous travaillons avec des entreprises ou bien toute autre entitée intéréssée par nos projets.</span>
+                <span class="text">L'accord est en règle général un soutien financier ou matériel en échange de publicité. Cependant, nous sommes ouverts à toutes propositions afin de répondre au mieux à vos besoins. Plus de détails sont apportés sur cette page concernant notamment nos besoins et les possibilités de publicités.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container color-inverted">
+      <div class="row-wrap-container picture-text">
+          <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
+          <div class="column-container left-align gap-cr">
+              <span class="text title">Nos objectifs</span>
+              <span class="text">Les connaissances acquises grâce à notre formation d'ingénieur ou nos projets personels nous permettent de viser une très bonne place à la Coupe de France de Robotique. De plus, l'ENSMASTEEL y participe depuis maintenant quelques années, nous savons donc parfaitement à quoi nous attendre et comment bien préparer la compétition.</span>
+              <span class="text">Nous tenons aussi à continuellement améliorer notre robot en reprenant les points forts des années précédentes tout en innovant. Par exemple, nous comptons cette année ajoutée une caméra afin d'effectuer de la reconnaissance d'image pour repérer tous les entitées sur la table de jeux (robots et éléments).</span>
+            </div>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <div class="row-wrap-container picture-text">
+          <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
+          <div class="column-container left-align gap-cr">
+              <span class="text title">Qu es-ce que la Coupe de France de Robotique ?</span>
+              <span class="text">La Coupe de France de Robotique est une compétition regroupant près de 200 équipes organisée depuis 2016 par Planète Sciences et la société d'économie mixte Oryon.</span>
+              <span class="text">Les règles du jeu varient chaque année, ce qui impose la construction de nouveaux robots. Toutefois, il existe des constantes : chaque robot doit être complètement autonome, c'est à dire qu'il doit disposer de ses propres sources d'énergie, actionneurs, capteurs et intelligence, et toutes les commandes à distance et interventions extérieures sont interdites pendant les matchs. De plus les robots ont de nombreuses contraintes tel qu'une taille maximale ou encore des systèmes d'évitement actifs obligatoires.</span>
+              <span class="text">Pout cette année, les matchs se déroulent sur une table de 2x3 mètres. Chaque équipes possèdent un robot principal de taille maximale 300x300x350mm et de nombreux robots secondaires dont la taille ne dépassent pas un cube de 10cm de côté. Le principal moyen de gagner des points est de récupérer des plantes disposer aléatoirement au centre de la table, de les mettre dans des pots et de venir les disposer aux endroits appropriés. Un façon secondaire de gagner des points est de venir tourner des panneaux solaires disposés sur le côté de la table. Une des difficultés est que les points peuvent être volés par l'adversaire, par example en drobant des plantes : il y a un vrai travail sur la stratégie pour cette année.</span>
+            </div>
+          </div>
+    </div>
+
+    <div class="content-container color-inverted">
+      <div class="row-wrap-container picture-text">
+          <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
+          <div class="column-container left-align gap-cr">
+              <span class="text title">Notre robot</span>
+              <span class="text">Comme dit précédement, le robot de cette année reprends les points forts de ceux des années précédentes. Ainsi, le robot principal de cette année à la même propulsion que l'année dernière était donné que le robot était rapide et précis. La carte électronique mère est elle aussi conservée pour sa fiabilitée et sa modularitée.</span>
+              <span class="text">Néanmoins, la seconde carte électronique de notre robot, la carte de puissance, est retravaillée cette année pour corriger des problèmes de surchauffe rencontrés à l'édition 2023 de la Coupe de France de Robotique. De plus, nous utilisons un LIDAR pour précisement évaluer distance nous séparant des robots adversaires et ainsi éviter une collision : le LIDAR utilisé l'année dernière eu de nombreux problèmes, nous le changeons donc cette année.</span>
+              <span class="text">Enfin, nous nous contentons jusqu'à cette année d'éxécuter une séquence d'action prédéfinie sans prendre en compte les faits de jeux. C'est un vrai problème car notre robot pouvait allé récupérer un élément à un endroit alors que celui-ci avait déjà changé de place : notre robot ne s'adaptait pas aux actions de l'adversaire. Or cette année, nous comptons, ajouter une caméra afin de repérer les éléments et donc d'agir en fonction de leur vrai position et non de la position où ils sont censés être. Notre robot sera donc bien plus robuste et devra pouvoir faire face à toutes les situations.</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <div class="row-wrap-container picture-text">
+          <img src="/static/pictures/ensmasteel-crew.webp" class="picture">
+          <div class="column-container left-align gap-cr">
+              <span class="text title">Nos engagements en retour</span>
+              <span class="text">Comme n'importe qu'elle équipe de la Coupe de France de Robotique, nous pouvons-vous faire de la publicité avec des stickers directement sur notre robot. De plus, tous les membres de l'équipes porterons lors de la compétition un polo à l'éffigie de l'ENSMASTEEL, nous pouvons donc aussi vous afficher sur celui-ci.</span>
+              <span class="text">Néanmoins là où l'ENSMASTEEL se démarque de nombreuses autres équipes est le fait que nous sommes un club de l'ISAE-ENSMA, une écolde d'ingénieur spécialisée en mécanique et en aéronautique. Ainsi, nous pouvons tout à fait faire de la publicité pour votre entreprise au sein même de l'école. Cette publibité pourra ainsi être visionée par près de 900 élèves ingénieur et doctorants agés entre 18 et 25 ans.</span>
+              <span class="text">Tout cela est à titre indicatif, tout accord est le fruit d'une discussion où vous pouvez exprimer vos idées.</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="content-container color-inverted">
+      <div class="column-container">
+          <div class="column-container gap-cr">
+              <span class="text title centered">Participations à la Coupe de France de Robotique</span>
+              <span class="text centered">Voici les dernières participations de l'ENSMASTEEL à la Coupe de France de Robotique. Cette liste est non exhaustive.</span>
+          </div>
+          <div class="row-wrap-container top-align pictures-captions gap-second">
+              <div class="column-container gap-cr">
+                  <img src="/static/pictures/ensmasteel-robot-2023.png" class="picture">
+                  <a href="/ensmasteel/CDF2023.html"  class="text preserve caption title subtitle link">2023</a>
+              </div>
+              <div class="column-container gap-cr">
+                  <img src="/static/pictures/ensmasteel-robot-2022.png" class="picture">
+                  <a href="/ensmasteel/CDF2022.html" class="text preserve caption title subtitle link">2022</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <div class="content-container">
+      <div class="row-wrap-container picture-text">
+          <div class="column-container left-align gap-second">
+              <span class="text preserve title">Contacts</span>
+              <div class="column-container left-align gap-cr">
+                  <div class="row-container gap-cr">
+                      <img src="/static/pictures/location-icon-black.png" class="icon">
+                      <span class="text" style="min-width: 0;">1 Avenue Clément Ader, Chasseneuil du Poitou</span>
+                  </div>
+                  <div class="row-container gap-cr">
+                      <img src="/static/pictures/mail-icon-black.png" class="icon">
+                      <a href="mailto:ensmasteel.clubrobotique@gmail.com" class="text preserve link">ensmasteel.clubrobotique@gmail.com</a>
+                  </div>
+                  <div class="row-container noflex gap-second">
+                      <a href="https://twitter.com/Ensmasteel"><img src="/static/pictures/twitter-icon-black.png" class="icon"></a>
+                      <a href="https://www.linkedin.com/company/association-ensmasteel/"><img src="/static/pictures/linkedin-icon-black.png" class="icon"></a>
+                      <a href="https://github.com/Ensmasteel"><img src="/static/pictures/github-icon-black.png" class="icon"></a>
+                      <a href="https://www.youtube.com/@ENSMASTEEL"><img src="/static/pictures/youtube-icon-black.png" class="icon"></a>
+                  </div>
+              </div>
+          </div>
+          <img src="/static/pictures/ensma.webp" class="picture">
+      </div>
+    </div>
+
+  </div>
+
+  <iframe src="/bottom.html" class="bottom-bar"></iframe>
+
+  <div id="background-page" class="background-page show" style="--animation-duration: 0s;"></div>
+</body>
+</html>

@@ -159,9 +159,11 @@ body {
     top: 0;
     left: 0;
     transform: translateY(100vh);
+    --animation-duration: 0.5s;
+    --animation-delay: 0.4s;
 }
 .page-content.show {
-    animation: pageContentScroll 0.5s ease-out 0.4s forwards;
+    animation: pageContentScroll var(--animation-duration) ease-out var(--animation-delay) forwards;
 }
 
 @keyframes pageContentScroll {
