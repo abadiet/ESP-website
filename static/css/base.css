@@ -334,12 +334,10 @@ body {
 
 .row-wrap-container.picture-text > .picture-container,
 .row-wrap-container.picture-text > .picture {
-    width: calc(100vw - 2 * var(--margin-side));
-    min-width: 500px;
+    width: min(500px, calc(100vw - 2 * var(--margin-side)));
 }
 .row-wrap-container.picture-text > .text-container {
-    width: calc(100vw - 2 * var(--margin-side));
-    min-width: 500px;
+    width: min(500px, calc(100vw - 2 * var(--margin-side)));
 }
 .row-wrap-container.pictures-captions .picture-container,
 .row-wrap-container.pictures-captions .picture {
