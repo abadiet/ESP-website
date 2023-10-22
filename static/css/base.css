@@ -229,6 +229,12 @@ body {
     border-radius: 0;
 }
 
+.picture-container {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
 /*.picture-container.blur-around::before {
     --effect-size: 5%;
     content: "";
@@ -243,6 +249,29 @@ body {
     opacity: 0.4;
     z-index: -1;
 }*/
+
+.picture-container.dual-pictures.width-fixed {
+    --picture-width: 75%;
+    --picture-height: auto;
+    --overlap-ratio: 0.2;
+}
+.picture-container.dual-pictures.height-fixed {
+    --picture-width: auto;
+    --picture-height: 75%;
+    --overlap-ratio: 0.2;
+}
+.picture-container.dual-pictures > .picture:first-child {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: var(--picture-width);
+    height: var(--picture-height);
+}
+.picture-container.dual-pictures > .picture:nth-child(2) {
+    position: absolute;
+    inset: auto 0 0 auto;
+    width: var(--picture-width);
+    height: var(--picture-height);
+}
 
 .icon {
     width: 30px;
@@ -303,14 +332,16 @@ body {
     flex: 1 1 0px;
 }
 
-/*.row-wrap-container.picture-text > .picture-container > .picture,*/
+.row-wrap-container.picture-text > .picture-container,
 .row-wrap-container.picture-text > .picture {
-    min-width: min(500px, calc(100vw - 2 * var(--margin-side)));
+    width: calc(100vw - 2 * var(--margin-side));
+    min-width: 500px;
 }
 .row-wrap-container.picture-text > .text-container {
-    min-width: min(300px, calc(100vw - 2 * var(--margin-side)));
+    width: calc(100vw - 2 * var(--margin-side));
+    min-width: 500px;
 }
-/*.row-wrap-container.pictures-captions .picture-container,*/
+.row-wrap-container.pictures-captions .picture-container,
 .row-wrap-container.pictures-captions .picture {
     height: 30vh;
     width: auto;
