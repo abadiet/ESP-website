@@ -65,6 +65,9 @@ function randomizeStar(star, spawnFarAway) {
   const init_distance_from_center = Math.sqrt(Math.pow(initX - 0.5 * window.innerWidth, 2) + Math.pow(initY - 0.5 * window.innerHeight, 2));
   const time_to_leave = distance * (1 - init_distance_from_center / (trajectory_distance + init_distance_from_center)) / our_speed;
   star.style.setProperty("--time-to-leave", time_to_leave);
+
+  star.style.setProperty("--blink-duration", random(0.2, 0.4) + 's');
+  star.style.setProperty("--blink-delay", random(0, 0.5) + 's');
 }
 
 

@@ -67,10 +67,7 @@
     clip-path: ellipse(closest-side farthest-side);
     rotate: calc(var(--angle) * 1rad);
     background-color: #ffffff;
-    animation-name: moveOut;
-    animation-duration: calc(var(--time-to-leave) * 1s);
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.770, 0.240, 0.905, 0.385);
+    animation: moveOut calc(var(--time-to-leave) * 1s) cubic-bezier(0.770, 0.240, 0.905, 0.385), blinkStar var(--blink-duration) var(--blink-delay) infinite;
 }
 
 @keyframes moveOut {
@@ -83,5 +80,17 @@
     }
     100% {
         transform: translateX(calc(var(--translate) * 1px)) scale(calc(var(--our-speed) * var(--time-to-leave)));
+    }
+}
+
+@keyframes blinkStar {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
     }
 }
