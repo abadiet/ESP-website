@@ -6,7 +6,8 @@ function getPropertyValue (property, menu) {
 }
 
 const menuOpenTransitionDuration = getPropertyValue('--menu-open-duration', null);
-const elementsShowInterval = 25;
+const elementsShowWait = 100;
+const elementsShowInterval = 12;
 const elementsOpactityTransitionDuration = getPropertyValue('--menu-elem-duration', null);
 const slidingDuration = getPropertyValue('--menu-sliding-duration', null);
 const menuBarHeight = getPropertyValue("--menu-bar-height", null)
@@ -209,7 +210,9 @@ menuButton.addEventListener('click', function() {
         menuOpen.classList.add('show');
         menuOpen.style.setProperty('--menu-open-scaleY', window.innerHeight / menuBarHeight);
         menuBar.classList.remove('show');
-        openMenu(primaryMenu);
+        setTimeout(() => {
+            openMenu(primaryMenu);
+        }, elementsShowWait);
     }
 });
 
@@ -220,8 +223,7 @@ checkEnoughWidth();
 
 parent.window.addEventListener('resize', () => {
     checkEnoughWidth();
-    closeSecondaries(null);
-    menuOpen.style.setProperty('--menu-open-scaleY', window.innerHeight / menuBarHeight);
+    if (!menuButton.classList.contains('open')) menuButton.click();
 });
 
 

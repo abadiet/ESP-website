@@ -1,7 +1,7 @@
 :root {
     --menu-bar-height: 44px;
     --menu-button-height: calc(var(--menu-bar-height) * 0.26);
-    --menu-open-duration: 400ms;
+    --menu-open-duration: 600ms;
     --menu-elem-duration: 300ms;
     --menu-sliding-duration: 300ms;
 }
@@ -155,7 +155,7 @@
     transform-origin: top;
     --menu-open-scaleY: 1;
     transform: scaleY(var(--menu-open-scaleY));
-    transition: transform var(--menu-elem-duration) ease-in-out;
+    transition: transform var(--menu-elem-duration) ease-out;
 }
 
 @supports not (backdrop-filter: saturate(130%) blur(10px)) {
@@ -170,7 +170,7 @@
     left: 50px;
     height: auto;
     width: auto;
-    padding-bottom: 150px;
+    padding-bottom: calc(100vh - var(--viewport-height) + 50px);
     gap: 50px;
 }
 
@@ -214,7 +214,7 @@
 
 .menu > * {
     margin-top: 2vh;
-    --elem-animation-translation: -8px;
+    --elem-animation-translation: -9px;
     transform: translateY(var(--elem-animation-translation));
     opacity: 0%;
 }
@@ -226,13 +226,16 @@
     opacity: 100%;
 }
 .menu > *.show.hiding {
-    animation: menuElemTransitionBwd var(--menu-elem-duration) ease-in-out forwards;
+    animation: menuElemTransitionBwd calc(var(--menu-elem-duration) * 0.35) ease-in-out forwards;
 }
 
 @keyframes menuElemTransitionFwd {
     0% {
         transform: translateY(var(--elem-animation-translation));
         opacity: 0%;
+    }
+    50% {
+        opacity: 35%;
     }
     100% {
         transform: translateY(0px);
@@ -260,7 +263,7 @@
 
 .menu-back-arrow {
     display: none;
-    position: absolute;
+    position: fixed;
     top: calc(var(--menu-bar-height) * 0.31);
     left: 2vw;
     width: calc(var(--menu-bar-height) * 0.42);
