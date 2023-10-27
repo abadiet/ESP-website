@@ -254,11 +254,13 @@ body {
     --picture-width: 75%;
     --picture-height: auto;
     --overlap-ratio: 0.2;
+    flex: auto;
 }
 .picture-container.dual-pictures.height-fixed {
     --picture-width: auto;
     --picture-height: 75%;
     --overlap-ratio: 0.2;
+    flex: auto;
 }
 .picture-container.dual-pictures > .picture:first-child {
     position: absolute;
