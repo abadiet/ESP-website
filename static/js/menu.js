@@ -223,7 +223,7 @@ checkEnoughWidth();
 
 parent.window.addEventListener('resize', () => {
     checkEnoughWidth();
-    if (!menuButton.classList.contains('open')) menuButton.click();
+    if (menuButton.classList.contains('close')) menuButton.click();
 });
 
 
