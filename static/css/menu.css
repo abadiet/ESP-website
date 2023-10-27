@@ -21,7 +21,7 @@
     transition: opacity 0.25s ease-out, background-color calc(var(--menu-open-duration)) ease-out;
 }
 .menu-container.show {
-    height: 100vh;
+    height: var(--viewport-height);
     background-color: var(--background-color-second);
 }
 .menu-container.show.hiding {
@@ -166,12 +166,13 @@
 
 .row-container-menu {
     position: absolute;
-    top: 50px;
-    left: 50px;
+    --menu-gap: 50px;
+    top: var(--menu-gap);
+    left: var(--menu-gap);
     height: auto;
     width: auto;
-    padding-bottom: calc(100vh - var(--viewport-height) + 50px);
-    gap: 50px;
+    gap: var(--menu-gap);
+    padding-bottom: var(--menu-gap);
 }
 
 .menu {
