@@ -7,9 +7,20 @@
     width: 100vw;
     height: 100vh;
     z-index: -998;
+    opacity: 0;
+    animation: asso-hello-entry 0.9s ease-in-out forwards 0.5s;
 }
 .asso-hello.slide {
     animation: helloSlideUp 0.5s ease-in forwards;
+}
+
+@keyframes asso-hello-entry {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes helloSlideUp {
