@@ -176,7 +176,7 @@ document.getElementById('defi-aero').addEventListener('click', function() {
 
 /* MAIN */
 
-menuButton.addEventListener('click', function() {
+function menuButton_click() {
     if (menuButton.classList.contains('open')) {
         menuButton.classList.remove('open');
         menuButton.classList.add('close');
@@ -192,12 +192,16 @@ menuButton.addEventListener('click', function() {
     if (menuContainer.classList.contains('show')) {
         menuContainer.classList.add('hiding');
         backArrow.classList.add("hiding");
+
+        menuButton.removeEventListener('click', menuButton_click);  // prevent double click
         setTimeout(() => {
             menuContainer.classList.remove('show');
             menuContainer.classList.remove('hiding');
             primaryMenu.classList.remove('hiding');
             backArrow.classList.remove("show");
             backArrow.classList.remove("hiding");
+
+            menuButton.addEventListener('click', menuButton_click);
         }, menuOpenTransitionDuration);
 
         parent.document.body.style.overflowY = 'scroll';
@@ -223,7 +227,9 @@ menuButton.addEventListener('click', function() {
             openMenu(primaryMenu);
         }, elementsShowWait);
     }
-});
+}
+
+menuButton.addEventListener('click', menuButton_click);
 
 
 /* ON RESIZE */
