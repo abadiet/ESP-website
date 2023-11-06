@@ -1,0 +1,84 @@
+/* ASSO HELLO */
+
+.asso-hello {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -998;
+}
+.asso-hello.slide {
+    animation: helloSlideUp 0.5s ease-in forwards;
+}
+
+@keyframes helloSlideUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+.asso-name {
+    position: absolute;
+    width: 90vw;
+    top: 0;
+    left: 5vw;
+
+    & > * {
+        font-family: outlined;
+        color: #ffffffcc;
+    }
+}
+
+@media (min-height: calc(2 * (10vh + 8vw + 10vh + 35vh / 2))) {
+    .asso-name {
+        padding-top: 10vh;
+    }
+}
+
+.asso-logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.asso-logo {
+    height: 35vh;
+    width: auto;
+    max-width: 100%;
+    display: block;
+}
+
+.asso-scrolldown {
+    position: absolute;
+    top: calc(var(--viewport-height) * 0.90);
+    height: calc(var(--viewport-height) * 0.10);
+    width: 100%;
+}
+.asso-scrolldown > * {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(var(--viewport-height) * 0.04);
+    width: auto;
+    animation: assoScrollDown 2.3s ease-in-out infinite;
+    rotate: -90deg;
+}
+
+@keyframes assoScrollDown {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(calc(var(--viewport-height) * 0.015));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
