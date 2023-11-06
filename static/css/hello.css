@@ -8,7 +8,7 @@
     height: 100vh;
     z-index: -998;
     opacity: 0;
-    animation: asso-hello-entry 0.9s ease-in-out forwards 0.5s;
+    animation: asso-hello-entry 0.9s ease-in-out forwards 0.9s;
 }
 .asso-hello.slide {
     animation: helloSlideUp 0.5s ease-in forwards;

@@ -179,7 +179,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    filter: blur(40px) saturate(1);
+    filter: blur(40px) saturate(150%) brightness(140%);
     border-radius: 20px;
     opacity: 0.4;
     z-index: 0;
