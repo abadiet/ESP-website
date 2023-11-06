@@ -280,6 +280,7 @@ body {
 .row-wrap-container.picture-text > .picture-container,
 .row-wrap-container.picture-text > .picture {
     width: min(500px, calc(100vw - 2 * var(--margin-side)));
+    min-width: 500px;
 }
 .row-wrap-container.picture-text > .text-container {
     width: min(500px, calc(100vw - 2 * var(--margin-side)));
