@@ -401,6 +401,7 @@ body {
     border: none;
     background: none;
     padding: 0;
+    cursor: pointer;
 }
 
 .link::before {
