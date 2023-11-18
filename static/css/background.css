@@ -58,6 +58,12 @@
     opacity: 0.8;
 }
 
+.bkg-stars-container {
+    width: 100%;
+    height: 100%;
+    --acceleration-effet-factor: 1;
+}
+
 .bkg-star {
     position: fixed;
     top: var(--initY);
@@ -79,7 +85,7 @@
         opacity: 1;
     }
     100% {
-        transform: translateX(calc(var(--translate) * 1px)) scale(calc(var(--our-speed) * var(--time-to-leave)));
+        transform: translateX(calc(var(--translate) * 1px)) scale(calc(var(--our-speed) * var(--time-to-leave) * var(--acceleration-effet-factor)), calc(var(--our-speed) * var(--time-to-leave)));
     }
 }
 

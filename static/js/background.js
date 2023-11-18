@@ -2,6 +2,8 @@
 
 const STAR_SIZE = 10;  // px
 const our_speed = 0.3; // unit distance per seconds
+const transition_duration = 1000;
+const max_acceleration_effect_ratio = 100;
 const stars_container = document.getElementById('stars-container');
 
 function random(a, b) {
@@ -56,9 +58,9 @@ function randomizeStar(star, spawnFarAway) {
 
   let distance;
   if (spawnFarAway) {
-    distance = 10;
+    distance = 6;
   } else {
-    distance = random(1, 10);
+    distance = random(2, 6);
   }
   star.style.setProperty("--distance", distance);
 
@@ -78,17 +80,15 @@ function generate(count, spawnFarAway) {
     star.classList.add("bkg-star");
 
     star.addEventListener("animationend", () => {
-      if (!star.classList.contains("slide")) {
-        generate(1, true);
-        star.remove();
-      }
+      generate(1, true);
+      star.remove();
     });
 
     stars_container.appendChild(star);
   }
 }
 
-generate((window.innerWidth + window.innerHeight) / 8, false);
+generate((window.innerWidth + window.innerHeight) / 15, false);
 document.body.style.overflowY = 'hidden';
 
 
@@ -101,22 +101,34 @@ const background_page_sub = document.getElementById('background-page-sublayer');
 const page_content = document.getElementById("page-content");
 const menu = document.getElementById("menu-container");
 
+const factor_update_delay = 10;
+function activateAccelerationEffect(factor) {
+  stars_container.style.setProperty("--acceleration-effet-factor", factor);
+  if (factor < max_acceleration_effect_ratio) {
+    factor += max_acceleration_effect_ratio / (transition_duration / factor_update_delay);
+    setTimeout(activateAccelerationEffect, 10, factor);
+  }
+}
+
 function goToContent() {
-  document.body.addEventListener("wheel", goToContent, options);
-  document.body.addEventListener("touchmove", goToContent, options);
-  document.body.addEventListener("click", goToContent, options);
 
-  background_page.classList.add("show");
-  background_page_sub.classList.add("show");
-  page_content.classList.add("show");
-
-  document.body.style.overflowY = 'scroll';
+  activateAccelerationEffect(1);
 
   setTimeout(() => {
-    asso_hello.remove();
-    background_hello.remove();
-    menu.style.opacity = 1;
-  }, 500);
+
+    background_page.classList.add("show");
+    background_page_sub.classList.add("show");
+    page_content.classList.add("show");
+
+    document.body.style.overflowY = 'scroll';
+
+    setTimeout(() => {
+      asso_hello.remove();
+      background_hello.remove();
+      menu.style.opacity = 1;
+    }, 500);
+  
+  }, transition_duration);
 
 }
 
