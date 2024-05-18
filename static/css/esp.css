@@ -1,0 +1,50 @@
+#bienvenue,
+#bienvenue > .row-container {
+    --gap: var(--margin-element-second);
+}
+#bienvenue > .row-container > .image-container {
+    width: 700px;
+    --effect-size: 5%;
+}
+#bienvenue > .row-container > .image-container > img {
+    border-radius: 15px;
+}
+
+#partenaires,
+#partenaires > .row-container {
+    --gap: var(--margin-element-second);
+}
+#partenaires > .row-container > .column-container {
+    --gap: 5px;
+}
+#partenaires > .row-container > .column-container > .image-container {
+    width: 300px;
+    --effect-size: 5%;
+}
+#partenaires > .row-container > .column-container > .image-container::before,
+#partenaires > .row-container > .column-container > .image-container > img {
+    background-color: white;
+}
+
+#contacts {
+    --gap: var(--margin-element-second);
+}
+#contacts > .column-container,
+#contacts > .column-container > .row-container {
+    --gap: var(--font-size-text);
+}
+#contacts > .column-container > .row-container >.image-container {
+    height: calc(2 * var(--font-size-text));
+    --effect-size: 5%;
+}
+#contacts > .image-container {
+    width: 400px;
+    --effect-size: 5%;
+}
+#contacts > .image-container > img {
+    border-radius: 15px;
+}
+
+#suggestions {
+    --gap: var(--margin-element-second);
+}

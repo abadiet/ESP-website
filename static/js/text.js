@@ -2,27 +2,28 @@ window.addEventListener("load", function() {
 
     /* FIT WIDTH */
     
-    const fit_width = document.querySelectorAll(".text-container.fit-width");
+    const fit_width = document.querySelectorAll(".text.fit-width");
     function fitWidth() {
         fit_width.forEach(textContainer => {
+            console.log(textContainer.parentElement.offsetWidth)
             let i = 1;
             const step = 1
             let decreasing = false;
 
-            while (textContainer.firstElementChild.offsetWidth < textContainer.offsetWidth) {
-                textContainer.firstElementChild.style.fontSize = `${i}px`;
+            while (textContainer.offsetWidth < textContainer.parentElement.offsetWidth) {
+                textContainer.style.fontSize = `${i}px`;
                 i += step;
             }
-            while (i >= 0 && textContainer.firstElementChild.offsetWidth > textContainer.offsetWidth) {
-                textContainer.firstElementChild.style.fontSize = `${i}px`;
+            while (i >= 0 && textContainer.offsetWidth > textContainer.parentElement.offsetWidth) {
+                textContainer.style.fontSize = `${i}px`;
                 i -= step;
                 decreasing = true;
             }
 
             if (decreasing) {
-                textContainer.firstElementChild.style.fontSize = `${i + step}px`;
+                textContainer.style.fontSize = `${i + step}px`;
             } else {
-                textContainer.firstElementChild.style.fontSize = `${i - step}px`;
+                textContainer.style.fontSize = `${i - step}px`;
             }
         });
     }

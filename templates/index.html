@@ -1,144 +1,135 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#161617" >
-  <title>ESP</title>
-  <link rel="shortcut icon" type="image/png" href="/static/pictures/esp-logo.png"/>
-  <link rel="stylesheet" type="text/css" href="/static/css/base.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/hello.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/background.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/bottom.css">
-  <script src="/static/js/viewport.js"></script>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#161617" >
+        <title>ESP</title>
+        <link rel="shortcut icon" type="image/png" href="/static/pictures/esp-logo.png"/>
+        <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/hello.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/background.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/bottom.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/esp.css">
+        <script src="/static/js/viewport.js"></script>
+    </head>
+    <body>
 
-  <div id="asso-hello" class="asso-hello">
-    <div class="text-container fit-width asso-name">
-        <span class="text">ENSMA SPACE PROJECT</span>
-    </div>
-    <div class="row-container nogap noflex asso-logo-container">
-        <img src="/static/pictures/esp-logo.png" class="asso-logo">
-    </div>
-    <div id="asso-scrolldown" class="asso-scrolldown">
-      <img src="/static/pictures/arrow-icon-white.png">
-    </div>
-  </div>
-
-  <div id="menu-container" class="menu-container">
-    <div id="menu-bar" class="menu-bar color-inverted row-container noflex show">
-        <div class="row-container noflex left-align">
-            <img src="/static/pictures/esp-logo.png" class="menu-bar-logo">
-            <span class="text preserve">Ensma Space Project</span>
+    <div id="asso-hello" class="asso-hello">
+        <div>
+            <span class="text preserve fit-width">ENSMA SPACE PROJECT</span>
+        </div>
+        <div class="row-container">
+            <div class="image-container fixed-height blur-around"><img src="/static/pictures/esp-logo.png"></div>
+        </div>
+        <div>
+            <div class="image-container fixed-height"><img src="/static/pictures/arrow-icon-white.png"></div>
         </div>
     </div>
-    <button id="menu-button" class="menu-button">
-        <div class="line"></div>
-        <div class="line"></div>
-    </button>
-    <iframe src="/menu.html" style="border: none; width: 100%; height: 100%;"></iframe>
-  </div>
 
-  <div id="page-content" class="page-content">
-
-    <div class="content-container">
-        <div class="row-wrap-container picture-text">
-          <div class="picture-container blur-around">
-            <img src="/static/pictures/ensma.webp" class="picture">
-          </div>
-          <div class="column-container left-align gap-cr">
-              <span class="text title">Bienvenue sur le site de l'ENSMA SPACE PROJECT</span>
-              <span class="text">L’ESP est une des associations de l’École Nationale Supérieure de Mécanique et d’Aérotechnique (ISAE-ENSMA).</span>
-              <span class="text">Lancé en 2011, il propose aux étudiants divers projets scientifiques sur le thème de l’aérospatial. Il s’agit, pour la plupart, de projets Planète-sciences ou de projets CNES.</span>
-              <span class="text">L’ENSMA étant spécialisée dans la formation d’ingénieurs aéronautiques et aérospatiaux, ce club a toute sa place au sein de l’école et bénéficie d’un soutien solide de la part de l’administration et des enseignants.</span>
-              <span class="text">Satellites, fusées, ballons sonde, drones, robots… autant de projets ouverts à tous les étudiants de l’école qui peuvent ainsi s’initier à la conduite de projets techniques de haut niveau et acquérir des compétences essentielles à un ingénieur.</span>
-              <span class="text">Ce site présente les différents projets de l’ESP et l’avancement de chacun d'entre eux.</span>
+    <div id="menu-container" class="menu-container">
+        <div id="menu-bar" class="menu-bar color-inverted row-container show">
+            <div class="row-container left-align">
+                <img src="/static/pictures/esp-logo.png" class="menu-bar-logo">
+                <span class="text preserve">Ensma Space Project</span>
             </div>
         </div>
+        <button id="menu-button" class="menu-button">
+            <div class="line"></div>
+            <div class="line"></div>
+        </button>
+        <iframe src="/menu.html" style="border: none; width: 100%; height: 100%;"></iframe>
     </div>
 
-    <div class="content-container color-inverted">
-        <div class="column-container">
-            <div class="column-container gap-cr">
-                <span class="text title preserve centered">Nos partenaires</span>
+    <div id="page-content" class="page-content">
+
+        <div id="bienvenue" class="content-container column-container">
+            <span class="text centered title">Bienvenue sur le site de l'ENSMA SPACE PROJECT</span>
+            <div class="row-container flex">
+                <div class="image-container blur-around fixed-width"><img src="/static/pictures/ensma.webp"></div>
+                <div class="text">
+                    L’ESP est une des associations de l’École Nationale Supérieure de Mécanique et d’Aérotechnique (ISAE-ENSMA).</span><br>
+                    <br>
+                    Lancé en 2011, il propose aux étudiants divers projets scientifiques sur le thème de l’aérospatial. Il s’agit, pour la plupart, de projets Planète-sciences ou de projets CNES.<br>
+                    <br>
+                    L’ENSMA étant spécialisée dans la formation d’ingénieurs aéronautiques et aérospatiaux, ce club a toute sa place au sein de l’école et bénéficie d’un soutien solide de la part de l’administration et des enseignants.<br>
+                    <br>
+                    Satellites, fusées, ballons sonde, drones, robots… autant de projets ouverts à tous les étudiants de l’école qui peuvent ainsi s’initier à la conduite de projets techniques de haut niveau et acquérir des compétences essentielles à un ingénieur.<br>
+                    <br>
+                    Ce site présente les différents projets de l’ESP et l’avancement de chacun d'entre eux.
+                </div>
+            </div>
+        </div>
+
+        <div id="partenaires" class="content-container color-inverted column-container">
+            <div class="text">
+                <span class="text title preserve centered">Nos partenaires</span><br>
                 <span class="text centered">Nous remercions nos partenaires pour leur soutien à nos projets</span>
             </div>
-            <div class="row-wrap-container top-align pictures-captions gap-second">
-                
-                  <div class="column-container gap-cr">
-                      <img src="/static/pictures/ensma-logo.png" class="picture no-edit" style="background-color: white;">
-                      <a href="https://www.ensma.fr" class="text preserve caption title subtitle link">ISAE-ENSMA</a>
-                  </div>
-                </a>
-                <div class="column-container gap-cr">
-                  <img src="/static/pictures/gotronic-logo.png" class="picture no-edit" style="background-color: white;">
-                  <a href="https://www.gotronic.fr/" class="text preserve caption title subtitle link">GoTronic</a>
+            <div class="row-container flex top-align">
+                <div class="column-container">
+                    <div class="image-container blur-around fixed-width"><img src="/static/pictures/ensma-logo.png"></div>
+                    <a href="https://www.ensma.fr" class="text preserve subtitle link">ISAE-ENSMA</a>
+                </div>
+                <div class="column-container">
+                    <div class="image-container blur-around fixed-width"><img src="/static/pictures/gotronic-logo.png"></div>
+                    <a href="https://www.gotronic.fr/" class="text preserve subtitle link">GoTronic</a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="content-container">
-      <div class="row-wrap-container picture-text">
-          <div class="column-container left-align gap-second">
-              <span class="text preserve title">Contacts</span>
-              <div class="column-container left-align gap-cr">
-                <div class="row-container gap-cr">
-                    <img src="/static/pictures/location-icon-black.png" class="icon">
-                    <span class="text" style="min-width: 0;">1 Avenue Clément Ader, Chasseneuil du Poitou</span>
+        <div id="contacts" class="content-container row-container flex">
+            <div class="column-container left-align">
+                <span class="text preserve title">Contacts</span>
+                <div class="row-container">
+                    <div class="image-container blur-around fixed-height"><img src="/static/pictures/location-icon-black.png"></div>
+                    <span class="text preserve">1 Avenue Clément Ader, Chasseneuil du Poitou</span>
                 </div>
-                <div class="row-container gap-cr">
-                    <img src="/static/pictures/mail-icon-black.png" class="icon">
+                <div class="row-container">
+                    <div class="image-container blur-around fixed-height"><img src="/static/pictures/mail-icon-black.png"></div>
                     <a href="mailto:esp.ensma@gmail.com" class="text preserve link">esp.ensma@gmail.com</a>
                 </div>
-                <div class="row-container gap-cr">
-                    <img src="/static/pictures/linkedin-icon-black.png" class="icon">
+                <div class="row-container">
+                    <div class="image-container blur-around fixed-height"><img src="/static/pictures/linkedin-icon-black.png" class="icon"></div>
                     <a href="https://linkedin.com/company/98738627" class="text preserve link">ENSMA Space Project</a>
                 </div>
-              </div>
-          </div>
-          <div class="picture-container blur-around">
-            <img src="/static/pictures/phobos-deimos-cspace-decollage.jpg" class="picture">
-          </div>
-      </div>
-  </div>
+            </div>
+            <div class="image-container blur-around fixed-width"><img src="/static/pictures/phobos-deimos-cspace-decollage.jpg"></div>
+        </div>
 
-  <div class="content-container color-inverted">
-    <div class="column-container autoflex gap-second">
-      <span class="text title preserve centered">Suggestions</span>
-      <div class="row-slidewshow-container">
-        <a href="/ensmasteel" class="text-on-picture-container">
-          <img src="/static/pictures/ensmasteel-CDR2023.png" class="picture">
-          <span class="text preserve title subtitle" style="color: var(--text-color-second)">ENSMASTEEL</span>
-        </a>
-        <a href="/fusex/phobos-deimos" class="text-on-picture-container">
-          <img src="/static/pictures/phobos-deimos-crew.webp" class="picture">
-          <span class="text preserve title subtitle" style="color: var(--text-color-second)">Phobos & Deimos</span>
-        </a>
-        <a href="/fusex/plume23" class="text-on-picture-container">
-          <img src="/static/pictures/plume23-cspace-decollage.webp" class="picture">
-          <span class="text preserve title subtitle" style="color: var(--text-color-main)">Plume23</span>
-        </a>
-      </div>
+        <div id="suggestions" class="content-container color-inverted column-container">
+            <span class="text title preserve centered">Suggestions</span>
+            <div class="row-slidewshow-container">
+                <a href="/ensmasteel">
+                    <div class="image-container blur-around fixed-both"><img src="/static/pictures/ensmasteel-CDR2023.png"></div>
+                    <span class="text preserve subtitle" style="color: var(--text-color-second)">ENSMASTEEL</span>
+                </a>
+                <a href="/fusex/phobos-deimos">
+                    <div class="image-container blur-around fixed-both"><img src="/static/pictures/phobos-deimos-crew.webp"></div>
+                    <span class="text preserve subtitle" style="color: var(--text-color-second)">Phobos & Deimos</span>
+                </a>
+                <a href="/fusex/plume23">
+                    <div class="image-container blur-around fixed-both"><img src="/static/pictures/plume23-cspace-decollage.webp"></div>
+                    <span class="text preserve subtitle" style="color: var(--text-color-main)">Plume23</span>
+                </a>
+            </div>
+        </div>
+
     </div>
-  </div>
 
-  </div>
+    <iframe src="/bottom.html" class="bottom-bar"></iframe>
 
-  <iframe src="/bottom.html" class="bottom-bar"></iframe>
+    <div id="background-hello" class="background-hello">
+        <div id="stars-container" class="bkg-stars-container"></div>
+    </div>
+    <div id="background-page" class="background-page"></div>
+    <div id="background-page-sublayer" class="background-page-sublayer"></div>
+    <script src="/static/js/background.js"></script>
 
-  <div id="background-hello" class="background-hello">
-    <div id="stars-container" class="bkg-stars-container"></div>
-  </div>
-  <div id="background-page" class="background-page"></div>
-  <div id="background-page-sublayer" class="background-page-sublayer"></div>
-  <script src="/static/js/background.js"></script>
-
-  <script src="/static/js/slideshow.js"></script>
-  <script src="/static/js/text.js"></script>
-  <script src="/static/js/picture.js"></script>
+    <script src="/static/js/slideshow.js"></script>
+    <script src="/static/js/text.js"></script>
+    <script src="/static/js/picture.js"></script>
 </body>
 </html>
 

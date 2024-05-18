@@ -1,6 +1,6 @@
 /* ASSO HELLO */
 
-.asso-hello {
+#asso-hello {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,10 +10,9 @@
     opacity: 0;
     animation: asso-hello-entry 0.9s ease-in-out forwards 0.9s;
 }
-.asso-hello.slide {
+#asso-hello.slide {
     animation: helloSlideUp 0.5s ease-in forwards;
 }
-
 @keyframes asso-hello-entry {
     0% {
         opacity: 0;
@@ -22,7 +21,6 @@
         opacity: 1;
     }
 }
-
 @keyframes helloSlideUp {
     0% {
         transform: translateY(0);
@@ -32,25 +30,24 @@
     }
 }
 
-.asso-name {
+#asso-hello > :first-child {
     position: absolute;
     width: 90vw;
     top: 0;
     left: 5vw;
-
-    & > * {
-        font-family: outlined;
-        color: #ffffffcc;
-    }
 }
-
-@media (min-height: calc(2 * (10vh + 8vw + 10vh + 35vh / 2))) {
-    .asso-name {
+@media (min-height: calc(2 * (10vh + 8vw + 10vh + 35vh / 2))) { 
+    #asso-hello > :first-child {
         padding-top: 10vh;
     }
 }
+#asso-hello > :first-child > .text {
+    font-family: outlined;
+    color: #ffffffcc;
+    display: inline;
+}
 
-.asso-logo-container {
+#asso-hello > .row-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -58,30 +55,30 @@
     height: 100vh;
 }
 
-.asso-logo {
+#asso-hello > .row-container > .image-container {
     height: 35vh;
-    width: auto;
     max-width: 100%;
     display: block;
+    --effect-size: 5%;
 }
 
-.asso-scrolldown {
+#asso-hello > :last-child {
     position: absolute;
     top: calc(var(--viewport-height) * 0.90);
     height: calc(var(--viewport-height) * 0.10);
     width: 100%;
 }
-.asso-scrolldown > * {
+#asso-hello > :last-child > .image-container {
     position: relative;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     height: calc(var(--viewport-height) * 0.04);
-    width: auto;
+    width: calc(var(--viewport-height) * 0.041);
+    margin: auto;
+}
+#asso-hello > :last-child > .image-container > img {
     animation: assoScrollDown 2.3s ease-in-out infinite;
     rotate: -90deg;
 }
-
 @keyframes assoScrollDown {
     0% {
         transform: translateX(0);
