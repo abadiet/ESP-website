@@ -34,6 +34,7 @@
 }
 #development > .row-container > .column-container > .image-container {
     height: 20vh;
+    border-radius: 15px;
     --effect-size: 5%;
 }
 
@@ -115,7 +116,7 @@
     --gap: 5px;
 }
 #our-robot > .row-container > .column-container > .image-container {
-    width: 300px;
+    width: min(200px, 50vw);
     --effect-size: 5%;
 }
 
