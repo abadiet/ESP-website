@@ -33,7 +33,7 @@ body {
     --margin-element-main: 5vw;
     --margin-element-second: 3vw;
 
-    --font-size-text: calc(0.9 * (0.7rem + 0.8vmin));
+    --font-size-text: 1.08rem;;
 
     --link-effect-step: 400ms;
 }
