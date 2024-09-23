@@ -34,8 +34,10 @@
 }
 #development > .row-container > .column-container > .image-container {
     height: 20vh;
-    border-radius: 15px;
     --effect-size: 5%;
+}
+#development > .row-container > .column-container > .image-container > img {
+    border-radius: 15px;
 }
 
 #participations,
