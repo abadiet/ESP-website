@@ -17,12 +17,16 @@
     --gap: 5px;
 }
 #sponsors > .row-container > .column-container > .image-container {
-    width: 300px;
+    width: 22vh;
+    height: 22vh;
     --effect-size: 5%;
+    background-color: white;
+    border-radius: 15px;
 }
 #sponsors > .row-container > .column-container > .image-container::before,
 #sponsors > .row-container > .column-container > .image-container > img {
     background-color: white;
+    border-radius: 15px;
 }
 
 #development,
